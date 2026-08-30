@@ -1,0 +1,172 @@
+---
+import { useTranslations, getLocalizedPath } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+import LanguagePicker from './LanguagePicker.astro';
+import ThemeToggle from './ThemeToggle.astro';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+const currentPath = Astro.url.pathname;
+
+const navItems = [
+  { href: getLocalizedPath('/guides/', lang), label: t('nav.guides') },
+  { href: getLocalizedPath('/blog/', lang), label: t('nav.blog') },
+  { href: getLocalizedPath('/tools/', lang), label: t('nav.tools') },
+  { href: getLocalizedPath('/about/', lang), label: t('nav.about') },
+];
+---
+
+<header class="site-header">
+  <div class="container header-inner">
+    <div class="header-left">
+      <a href={`/${lang}/`} class="site-logo">
+        <span class="logo-dot"></span>
+        <span class="logo-text">minimalist<span class="logo-tld">.lv</span></span>
+      </a>
+    </div>
+
+    <nav class="header-nav" aria-label="Main Navigation">
+      {
+        navItems.map((item) => {
+          const isActive = currentPath.startsWith(item.href);
+          return (
+            <a
+              href={item.href}
+              class={`nav-link ${isActive ? 'active' : ''}`}
+              aria-current={isActive ? 'page' : undefined}
+            >
+              {item.label}
+            </a>
+          );
+        })
+      }
+    </nav>
+
+    <div class="header-right">
+      <button
+        type="button"
+        class="search-trigger-btn"
+        onclick="window.openSearch && window.openSearch()"
+        aria-label={t('nav.search')}
+      >
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="11" cy="11" r="8"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="search-key-hint">/</span>
+      </button>
+
+      <LanguagePicker currentLang={lang} />
+      <ThemeToggle lang={lang} />
+    </div>
+  </div>
+</header>
+
+<style>
+  .site-header {
+    height: var(--header-height);
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--bg-primary);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+
+  .header-inner {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .header-left {
+    display: flex;
+    align-items: center;
+  }
+
+  .site-logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-weight: 700;
+    font-size: 1.125rem;
+    letter-spacing: -0.02em;
+    color: var(--text-primary);
+  }
+
+  .logo-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background-color: var(--text-primary);
+  }
+
+  .logo-tld {
+    color: var(--text-muted);
+    font-weight: 500;
+  }
+
+  .header-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .nav-link {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
+  }
+
+  .nav-link:hover, .nav-link.active {
+    color: var(--text-primary);
+  }
+
+  .nav-link.active {
+    font-weight: 600;
+  }
+
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  .search-trigger-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.6rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-muted);
+    font-size: 0.8rem;
+    transition: all 0.15s ease;
+  }
+
+  .search-trigger-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-focus);
+  }
+
+  .search-key-hint {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.05rem 0.3rem;
+    border-radius: 3px;
+    background-color: var(--bg-card);
+    border: 1px solid var(--border-color);
+  }
+
+  @media (max-width: 640px) {
+    .header-nav {
+      display: none;
+    }
+  }
+</style>

@@ -1,0 +1,62 @@
+---
+import { languages, type SupportedLanguage } from '../i18n/ui';
+import { getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  currentLang: SupportedLanguage;
+}
+
+const { currentLang } = Astro.props;
+const currentPath = Astro.url.pathname;
+---
+
+<div class="lang-picker" role="navigation" aria-label="Language Selector">
+  {
+    Object.entries(languages).map(([code, label]) => {
+      const isCurrent = code === currentLang;
+      const targetUrl = getLocalizedPath(currentPath, code as SupportedLanguage);
+      return (
+        <a
+          href={targetUrl}
+          class={`lang-link ${isCurrent ? 'active' : ''}`}
+          aria-current={isCurrent ? 'page' : undefined}
+          title={label}
+        >
+          {code.toUpperCase()}
+        </a>
+      );
+    })
+  }
+</div>
+
+<style>
+  .lang-picker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+    font-size: 0.75rem;
+    font-family: var(--font-mono);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 2px 4px;
+    background-color: var(--bg-card);
+  }
+
+  .lang-link {
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--text-muted);
+    font-weight: 500;
+    transition: all 0.15s ease;
+  }
+
+  .lang-link:hover {
+    color: var(--text-primary);
+  }
+
+  .lang-link.active {
+    color: var(--accent-contrast);
+    background-color: var(--accent);
+    font-weight: 700;
+  }
+</style>

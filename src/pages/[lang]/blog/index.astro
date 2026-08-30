@@ -1,0 +1,150 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
+import { getCollection } from 'astro:content';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+
+const allBlogPosts = await getCollection('blog', ({ id }) => id.startsWith(`${lang}/`));
+const sortedPosts = allBlogPosts.sort((a, b) => b.data.publishedDate.getTime() - a.data.publishedDate.getTime());
+---
+
+<BaseLayout
+  title={`${t('section.blog.title')} — minimalist.lv`}
+  description={t('section.blog.subtitle')}
+  lang={lang}
+>
+  <div class="container-narrow">
+    <header class="page-header">
+      <div class="category-badge mono">{t('nav.blog')}</div>
+      <h1 class="page-title">{t('section.blog.title')}</h1>
+      <p class="page-subtitle text-secondary">{t('section.blog.subtitle')}</p>
+    </header>
+
+    <div class="blog-list">
+      {
+        sortedPosts.map((post) => {
+          const cleanSlug = post.slug.replace(`${lang}/`, '');
+          const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang === 'ru' ? 'ru-RU' : 'en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }).format(post.data.publishedDate);
+
+          return (
+            <article class="blog-item card">
+              <div class="blog-item-meta mono">
+                <span class="blog-week-tag">
+                  {post.data.weekNumber === 0 ? 'MANIFESTO / WELCOME' : `WEEK #${String(post.data.weekNumber).padStart(2, '0')}`}
+                </span>
+                <span class="text-muted">• {formattedDate}</span>
+                <span class="text-muted">• {post.data.readingTimeMinutes} {t('meta.readingTime')}</span>
+              </div>
+              <h2 class="blog-item-title">
+                <a href={getLocalizedPath(`/blog/${cleanSlug}/`, lang)}>
+                  {post.data.title}
+                </a>
+              </h2>
+              <p class="blog-item-desc text-secondary">{post.data.description}</p>
+              <div class="blog-item-footer">
+                <a href={getLocalizedPath(`/blog/${cleanSlug}/`, lang)} class="read-more-link">
+                  Read essay →
+                </a>
+              </div>
+            </article>
+          );
+        })
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .blog-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .blog-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+
+  .blog-item-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.8rem;
+  }
+
+  .blog-week-tag {
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .blog-item-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.3;
+  }
+
+  .blog-item-title a:hover {
+    opacity: 0.75;
+  }
+
+  .blog-item-desc {
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  .blog-item-footer {
+    padding-top: 0.5rem;
+  }
+
+  .read-more-link {
+    font-size: 0.875rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .read-more-link:hover {
+    opacity: 0.75;
+  }
+</style>

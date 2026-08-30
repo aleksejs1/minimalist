@@ -1,0 +1,140 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { useTranslations } from '../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={`${t('nav.about')} — minimalist.lv`}
+  description={t('site.description')}
+  lang={lang}
+>
+  <div class="container-narrow">
+    <header class="page-header">
+      <div class="category-badge mono">{t('nav.about')}</div>
+      <h1 class="page-title">{t('site.title')}</h1>
+      <p class="page-subtitle text-secondary">{t('site.tagline')}</p>
+    </header>
+
+    <div class="prose">
+      {
+        lang === 'ru' ? (
+          <>
+            <h2>Манифест проекта</h2>
+            <p>
+              <strong>minimalist.lv</strong> — это независимая некоммерческая база знаний и каталог инструментов, созданный для всех, кто стремится к осознанной простоте в материальном мире, цифровой среде и мыслях.
+            </p>
+            <p>
+              Мы убеждены, что изобилие вещей и постоянный информационный шум не делают нас счастливее. Напротив, они крадут самый невозобновляемый ресурс человека — <em>время и внимание</em>.
+            </p>
+
+            <h2>Критерии отбора программ в каталоге</h2>
+            <p>
+              Наш каталог программ вдохновлен стандартами проекта Privacy Guides. Мы не принимаем платные интеграции и оцениваем каждый инструмент по строгим критериям:
+            </p>
+            <ul>
+              <li><strong>No Bloatware (Легковесность):</strong> минимальное потребление ресурсов системы и отсутствие лишних функций.</li>
+              <li><strong>Local-First:</strong> ваши данные хранятся у вас на диске в открытых форматах (Markdown, SQLite, plain text) и доступны офлайн.</li>
+              <li><strong>Уважение к вниманию:</strong> интерфейсы без навязчивой рекламы, баннеров подписки и бесконечных уведомлений.</li>
+              <li><strong>Zero Telemetry:</strong> отсутствие скрытого сбора статистики и сторонних трекеров.</li>
+            </ul>
+
+            <h2>Техническая открытость</h2>
+            <p>
+              Этот сайт сгенерирован на 100% в виде статических файлов с помощью Astro. Здесь нет аналитики, трекеров и рекламных пикселей. Весь исходный код и статьи открыты для участия сообщества на GitHub.
+            </p>
+          </>
+        ) : lang === 'lv' ? (
+          <>
+            <h2>Projekta manifests</h2>
+            <p>
+              <strong>minimalist.lv</strong> ir neatkarīga bezpeļņas zināšanu bāze un rīku katalogs ikvienam, kurš tiecas pēc apzinātas vienkāršības materiālajā pasaulē, digitālajā vidē un domās.
+            </p>
+            <p>
+              Mēs esam pārliecināti, ka mantu pārpilnība un nemitīgs informācijas troksnis nepadara mūs laimīgākus. Tie atņem pašu vērtīgāko cilvēka resursu — <em>laiku un uzmanību</em>.
+            </p>
+
+            <h2>Programmatūras atlases kritēriji</h2>
+            <p>
+              Mūsu rīku katalogs balstās uz stingriem un pārskatāmiem standartiem:
+            </p>
+            <ul>
+              <li><strong>Vieglums un ātrdarbība (No Bloatware):</strong> minimāls sistēmas resursu patēriņš bez liekas funkcionalitātes.</li>
+              <li><strong>Local-First:</strong> jūsu dati pieder jums un tiek glabāti atvērtos formātos (Markdown, SQLite, teksts) ar pilnu bezsaistes atbalstu.</li>
+              <li><strong>Uzmanības cieņa:</strong> saskarnes bez uzbāzīgām reklāmām, abonēšanas logiem un traucējošiem paziņojumiem.</li>
+              <li><strong>Bez telemetrijas:</strong> nekādas slēptas datu vākšanas vai trešo pušu izsekošanas.</li>
+            </ul>
+
+            <h2>Tehniskā atvērtība</h2>
+            <p>
+              Šī vietne ir 100% statiska, veidota ar Astro. Tā nesatur analītikas rīkus vai izsekošanas sīkfailus. Viss pirmkods un raksti ir atvērti sadarbībai GitHub repozitorijā.
+            </p>
+          </>
+        ) : (
+          <>
+            <h2>Our Manifesto</h2>
+            <p>
+              <strong>minimalist.lv</strong> is an independent, non-commercial knowledge base and software directory created for anyone seeking intentional simplicity in their physical space, digital environment, and mindset.
+            </p>
+            <p>
+              We believe that perpetual accumulation and constant sensory noise do not lead to fulfillment. Instead, they extract our most finite resources: <em>time, focus, and peace of mind</em>.
+            </p>
+
+            <h2>Software Selection Criteria</h2>
+            <p>
+              Inspired by the rigorous methodology of Privacy Guides, we do not accept sponsorships or affiliate deals. Every recommended tool is evaluated against strict criteria:
+            </p>
+            <ul>
+              <li><strong>No Bloatware:</strong> Low memory/CPU footprint and refusal of feature-creep.</li>
+              <li><strong>Local-First & Open Standards:</strong> Your data remains stored locally on your device in plain text (Markdown, SQLite, CSV) with 100% offline functionality.</li>
+              <li><strong>Distraction-Free UI:</strong> Clean interfaces without predatory dark patterns, upsell modals, or notification spam.</li>
+              <li><strong>Zero Telemetry:</strong> Uncompromising respect for privacy and digital sovereignty.</li>
+            </ul>
+
+            <h2>Technical Integrity</h2>
+            <p>
+              This site is built as a 100% static application using Astro. It contains zero client-side tracking beacons, zero advertising cookies, and runs entirely at the edge. The entire codebase and content library are open-source on GitHub.
+            </p>
+          </>
+        )
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+</style>

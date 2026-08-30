@@ -1,0 +1,87 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Heading {
+  depth: number;
+  slug: string;
+  text: string;
+}
+
+interface Props {
+  headings: Heading[];
+  lang: SupportedLanguage;
+}
+
+const { headings, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const filteredHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+---
+
+{
+  filteredHeadings.length > 0 && (
+    <aside class="toc-sidebar" aria-label={t('meta.tableOfContents')}>
+      <div class="toc-container">
+        <span class="toc-title">{t('meta.tableOfContents')}</span>
+        <ul class="toc-list">
+          {filteredHeadings.map((heading) => (
+            <li class={`toc-item depth-${heading.depth}`}>
+              <a href={`#${heading.slug}`} class="toc-link">
+                {heading.text}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </aside>
+  )
+}
+
+<style>
+  .toc-sidebar {
+    font-size: 0.85rem;
+  }
+
+  .toc-container {
+    position: sticky;
+    top: calc(var(--header-height) + 2rem);
+    border-left: 1px solid var(--border-color);
+    padding-left: 1rem;
+    max-height: calc(100vh - var(--header-height) - 4rem);
+    overflow-y: auto;
+  }
+
+  .toc-title {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .toc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .toc-item.depth-3 {
+    padding-left: 0.75rem;
+  }
+
+  .toc-link {
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
+    display: block;
+    line-height: 1.35;
+  }
+
+  .toc-link:hover {
+    color: var(--text-primary);
+  }
+</style>

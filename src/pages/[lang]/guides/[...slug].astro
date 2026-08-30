@@ -1,0 +1,34 @@
+---
+import GuideLayout from '../../../layouts/GuideLayout.astro';
+import { getCollection } from 'astro:content';
+import type { SupportedLanguage } from '../../../i18n/ui';
+
+export async function getStaticPaths() {
+  const allGuides = await getCollection('guides');
+  return allGuides.map((guide) => {
+    const [lang, ...slugParts] = guide.slug.split('/');
+    const slug = slugParts.join('/');
+    return {
+      params: { lang, slug },
+      props: { guide },
+    };
+  });
+}
+
+const { guide } = Astro.props;
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const { Content, headings } = await guide.render();
+---
+
+<GuideLayout
+  title={guide.data.title}
+  description={guide.data.description}
+  order={guide.data.order}
+  category={guide.data.category}
+  publishedDate={guide.data.publishedDate}
+  readingTime={guide.data.readingTime}
+  lang={lang}
+  headings={headings}
+>
+  <Content />
+</GuideLayout>

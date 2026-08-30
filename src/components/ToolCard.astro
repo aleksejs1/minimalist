@@ -1,0 +1,248 @@
+---
+import { useTranslations } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  tool: {
+    name: string;
+    tagline: string;
+    websiteUrl: string;
+    sourceCodeUrl?: string;
+    isOpenSource: boolean;
+    isOfflineFirst: boolean;
+    isZeroTelemetry: boolean;
+    license: string;
+    platforms: string[];
+    recommendationStatus: 'recommended' | 'lightweight_hero' | 'notable_mention' | 'cli';
+    pros: string[];
+    cons: string[];
+    minimalistVerdict: string;
+  };
+  lang: SupportedLanguage;
+}
+
+const { tool, lang } = Astro.props;
+const t = useTranslations(lang);
+
+const badgeLabels: Record<string, string> = {
+  recommended: `🏆 ${t('tools.badge.recommended')}`,
+  lightweight_hero: `⚡ ${t('tools.badge.lightweight_hero')}`,
+  cli: `🧪 ${t('tools.badge.cli')}`,
+  notable_mention: `💡 ${t('tools.badge.notable_mention')}`,
+};
+---
+
+<div class="tool-card card" id={tool.name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}>
+  <div class="tool-header">
+    <div class="tool-title-row">
+      <h3 class="tool-name">{tool.name}</h3>
+      <span class={`badge badge-${tool.recommendationStatus}`}>
+        {badgeLabels[tool.recommendationStatus] || tool.recommendationStatus}
+      </span>
+    </div>
+    <p class="tool-tagline">{tool.tagline}</p>
+  </div>
+
+  <div class="tool-meta-tags">
+    {tool.isOpenSource && <span class="meta-tag tag-foss">✓ {t('tools.tag.foss')}</span>}
+    {tool.isOfflineFirst && <span class="meta-tag tag-offline">✓ {t('tools.tag.localFirst')}</span>}
+    {tool.isZeroTelemetry && <span class="meta-tag tag-privacy">✓ {t('tools.tag.zeroTelemetry')}</span>}
+    <span class="meta-tag tag-license">{tool.license}</span>
+    <span class="meta-tag tag-platforms">{tool.platforms.join(', ')}</span>
+  </div>
+
+  <div class="tool-body">
+    <div class="pros-cons-grid">
+      <div class="pros-col">
+        <span class="section-label text-muted">{t('tools.pros')}</span>
+        <ul class="points-list">
+          {tool.pros.map((pro) => (
+            <li class="pro-item">
+              <span class="bullet pro-bullet">+</span>
+              <span>{pro}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="cons-col">
+        <span class="section-label text-muted">{t('tools.cons')}</span>
+        <ul class="points-list">
+          {tool.cons.map((con) => (
+            <li class="con-item">
+              <span class="bullet con-bullet">−</span>
+              <span>{con}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="verdict-box">
+      <span class="verdict-label">{t('tools.verdict')}:</span>
+      <p class="verdict-text">{tool.minimalistVerdict}</p>
+    </div>
+  </div>
+
+  <div class="tool-actions">
+    <a href={tool.websiteUrl} target="_blank" rel="noopener noreferrer" class="tool-btn btn-primary">
+      {t('tools.visitWebsite')} ↗
+    </a>
+    {tool.sourceCodeUrl && (
+      <a href={tool.sourceCodeUrl} target="_blank" rel="noopener noreferrer" class="tool-btn btn-secondary">
+        {t('tools.sourceCode')} ↗
+      </a>
+    )}
+  </div>
+</div>
+
+<style>
+  .tool-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+  }
+
+  .tool-title-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.35rem;
+  }
+
+  .tool-name {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .tool-tagline {
+    font-size: 0.95rem;
+    color: var(--text-secondary);
+    line-height: 1.5;
+  }
+
+  .tool-meta-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+  }
+
+  .meta-tag {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    padding: 0.15rem 0.5rem;
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    color: var(--text-secondary);
+    border: 1px solid var(--border-color);
+  }
+
+  .tag-foss, .tag-offline, .tag-privacy {
+    font-weight: 500;
+  }
+
+  .pros-cons-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+
+  .section-label {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+
+  .points-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    font-size: 0.875rem;
+  }
+
+  .pro-item, .con-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    line-height: 1.4;
+  }
+
+  .bullet {
+    font-family: var(--font-mono);
+    font-weight: 700;
+  }
+
+  .pro-bullet { color: #10b981; }
+  .con-bullet { color: #ef4444; }
+
+  .verdict-box {
+    background-color: var(--bg-secondary);
+    border-left: 3px solid var(--text-primary);
+    padding: 0.85rem 1rem;
+    border-radius: 0 6px 6px 0;
+    font-size: 0.875rem;
+  }
+
+  .verdict-label {
+    font-weight: 700;
+    color: var(--text-primary);
+    display: inline;
+    margin-right: 0.35rem;
+  }
+
+  .verdict-text {
+    display: inline;
+    color: var(--text-secondary);
+  }
+
+  .tool-actions {
+    display: flex;
+    gap: 0.75rem;
+    padding-top: 0.5rem;
+    border-top: 1px solid var(--border-color);
+  }
+
+  .tool-btn {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 0.4rem 0.85rem;
+    border-radius: 6px;
+    transition: all 0.15s ease;
+  }
+
+  .btn-primary {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn-primary:hover {
+    opacity: 0.85;
+  }
+
+  .btn-secondary {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+  }
+
+  .btn-secondary:hover {
+    border-color: var(--border-focus);
+  }
+
+  @media (max-width: 640px) {
+    .pros-cons-grid {
+      grid-template-columns: 1fr;
+      gap: 1rem;
+    }
+  }
+</style>

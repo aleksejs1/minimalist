@@ -1,0 +1,416 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+---
+
+<BaseLayout
+  title={`${t('decisionTree.title')} — minimalist.lv`}
+  description={t('decisionTree.subtitle')}
+  lang={lang}
+>
+  <div class="container-narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={`/${lang}/`}>{t('nav.home')}</a>
+      <span class="sep">/</span>
+      <a href={getLocalizedPath('/tools/', lang)}>{t('nav.tools')}</a>
+      <span class="sep">/</span>
+      <span class="current">{t('decisionTree.title')}</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="category-badge mono">INTERACTIVE UTILITY</div>
+      <h1 class="page-title">{t('decisionTree.title')}</h1>
+      <p class="page-subtitle text-secondary">{t('decisionTree.subtitle')}</p>
+    </header>
+
+    <div class="decision-card card" id="decision-wizard">
+      <div class="step-progress mono" id="step-indicator">
+        {lang === 'ru' ? 'Шаг 1 из 5' : lang === 'lv' ? '1. solis no 5' : 'Step 1 of 5'}
+      </div>
+
+      <div class="question-container">
+        <h2 class="question-text" id="question-text">...</h2>
+        <p class="question-explanation text-secondary" id="question-desc">...</p>
+      </div>
+
+      <div class="decision-buttons" id="decision-buttons">
+        <button type="button" class="btn-decision btn-yes" id="btn-yes">
+          {lang === 'ru' ? 'Да' : lang === 'lv' ? 'Jā' : 'Yes'}
+        </button>
+        <button type="button" class="btn-decision btn-no" id="btn-no">
+          {lang === 'ru' ? 'Нет' : lang === 'lv' ? 'Nē' : 'No'}
+        </button>
+      </div>
+
+      <div class="result-container" id="result-container" style="display: none;">
+        <div class="result-badge" id="result-badge">...</div>
+        <h3 class="result-title" id="result-title">...</h3>
+        <p class="result-explanation text-secondary" id="result-desc">...</p>
+        <button type="button" class="btn-restart" id="btn-restart">
+          ↻ {t('decisionTree.restart')}
+        </button>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ lang }}>
+  const questionsData = {
+    en: [
+      {
+        q: "1. Do you already own an item that solves this problem at least 80%?",
+        desc: "Consider alternative uses for things currently in your drawers or closets before adding a new item.",
+        yesAction: "REJECT_DUPLICATE",
+        noAction: "NEXT"
+      },
+      {
+        q: "2. Have at least 72 hours passed since you first wanted this item?",
+        desc: "Impulse desires trigger sudden dopamine spikes that subside after 3 days.",
+        yesAction: "NEXT",
+        noAction: "WAIT_72H"
+      },
+      {
+        q: "3. Do you have a designated, uncluttered physical home for this item right now?",
+        desc: "If an item doesn't have an immediate storage place, it will become visual clutter on your counters.",
+        yesAction: "NEXT",
+        noAction: "REJECT_NOSPACE"
+      },
+      {
+        q: "4. Are you willing to trade [Price ÷ Your Hourly Wage] hours of life energy for it?",
+        desc: "Every purchase is traded with hours of your past or future labor.",
+        yesAction: "NEXT",
+        noAction: "REJECT_EXPENSIVE"
+      },
+      {
+        q: "5. Will this item still provide value to your everyday life in 6 months?",
+        desc: "Differentiate between short-term novelty and durable utility.",
+        yesAction: "APPROVE_BUY",
+        noAction: "REJECT_NOVELTY"
+      }
+    ],
+    ru: [
+      {
+        q: "1. Есть ли у вас вещь, которая решает эту задачу хотя бы на 80%?",
+        desc: "Проверьте шкафы и ящики. Часто решение уже есть дома, но забыто.",
+        yesAction: "REJECT_DUPLICATE",
+        noAction: "NEXT"
+      },
+      {
+        q: "2. Прошло ли не менее 72 часов с момента первого желания купить это?",
+        desc: "Импульсивный дофаминовый всплеск обычно угасает за 3 дня.",
+        yesAction: "NEXT",
+        noAction: "WAIT_72H"
+      },
+      {
+        q: "3. Есть ли у вас готовое свободное место для хранения этой вещи прямо сейчас?",
+        desc: "Если у предмета нет своего места, он станет визуальным шумом на столах.",
+        yesAction: "NEXT",
+        noAction: "REJECT_NOSPACE"
+      },
+      {
+        q: "4. Готовы ли вы заплатить за это [Цена ÷ Часовая ставка] часов своей жизни?",
+        desc: "Каждая покупка оплачивается часами вашего труда и времени.",
+        yesAction: "NEXT",
+        noAction: "REJECT_EXPENSIVE"
+      },
+      {
+        q: "5. Будет ли эта вещь регулярно использоваться вами через 6 месяцев?",
+        desc: "Отличайте сиюминутную новизну от долгосрочной полезности.",
+        yesAction: "APPROVE_BUY",
+        noAction: "REJECT_NOVELTY"
+      }
+    ],
+    lv: [
+      {
+        q: "1. Vai jums jau pieder lieta, kas atrisina šo vajadzību vismaz par 80%?",
+        desc: "Pirms jauna pirkuma pārbaudiet savus plauktus un esošos resursus.",
+        yesAction: "REJECT_DUPLICATE",
+        noAction: "NEXT"
+      },
+      {
+        q: "2. Vai ir pagājušas vismaz 72 stundas kopš pirmās vēlmes to iegādāties?",
+        desc: "Impulsīva vēlme parasti izzūd trīs dienu laikā.",
+        yesAction: "NEXT",
+        noAction: "WAIT_72H"
+      },
+      {
+        q: "3. Vai šai lietai mājās jau ir paredzēta konkrēta brīva vieta?",
+        desc: "Ja lietai nav savas vietas, tā radīs vizuālu nekārtību.",
+        yesAction: "NEXT",
+        noAction: "REJECT_NOSPACE"
+      },
+      {
+        q: "4. Vai esat gatavs atdot par to [Cena ÷ Stundas likme] savas dzīves stundas?",
+        desc: "Katrs pirkums tiek apmaksāts ar jūsu darba laiku un enerģiju.",
+        yesAction: "NEXT",
+        noAction: "REJECT_EXPENSIVE"
+      },
+      {
+        q: "5. Vai šī lieta joprojām būs noderīga pēc 6 mēnešiem?",
+        desc: "Nošķiriet īslaicīgu aizrautību no ilgtermiņa lietderības.",
+        yesAction: "APPROVE_BUY",
+        noAction: "REJECT_NOVELTY"
+      }
+    ]
+  };
+
+  const resultsData = {
+    en: {
+      REJECT_DUPLICATE: { title: "❌ Do Not Buy: Use Existing Item", desc: "You already own something that fulfills this purpose. Repair, repurpose, or use what you already have." },
+      WAIT_72H: { title: "⏳ Put into 30-Day Wishlist", desc: "The urge is too fresh. Add the item to a plain-text wishlist with today's date. If you still need it in 30 days, reconsider." },
+      REJECT_NOSPACE: { title: "❌ Do Not Buy: Declutter First", desc: "Until you declutter existing excess and create a dedicated home for this item, buying it will create clutter." },
+      REJECT_EXPENSIVE: { title: "❌ Do Not Buy: High Life Energy Cost", desc: "The utility provided does not justify the hours of life energy traded for this object." },
+      REJECT_NOVELTY: { title: "❌ Do Not Buy: Short-Term Novelty", desc: "This purchase is driven by temporary novelty rather than long-term utility." },
+      APPROVE_BUY: { title: "✅ Intentional Purchase Approved", desc: "This item solves a genuine need, has a dedicated space, respects your finances, and will serve you long-term. Buy with peace of mind." }
+    },
+    ru: {
+      REJECT_DUPLICATE: { title: "❌ Не покупайте: Используйте имеющееся", desc: "У вас уже есть вещь, закрывающая эту потребность. Используйте то, что есть." },
+      WAIT_72H: { title: "⏳ Отложите в список желаний на 30 дней", desc: "Желание слишком свежее. Запишите вещь в список с датой. Если через месяц потребность останется — вернитесь к ней." },
+      REJECT_NOSPACE: { title: "❌ Не покупайте: Сначала освободите место", desc: "Пока для вещи нет свободного места, она станет причиной беспорядка в доме." },
+      REJECT_EXPENSIVE: { title: "❌ Не покупайте: Слишком высокая цена в часах жизни", desc: "Польза от этой вещи не окупает часы труда, затраченные на ее оплату." },
+      REJECT_NOVELTY: { title: "❌ Не покупайте: Сиюминутная прихоть", desc: "Покупка вызвана временным желанием новизны, а не реальной полезностью." },
+      APPROVE_BUY: { title: "✅ Осознанная покупка одобрена", desc: "Вещь закрывает реальную потребность, имеет место в доме и послужит вам долго. Покупайте спокойно." }
+    },
+    lv: {
+      REJECT_DUPLICATE: { title: "❌ Nepērciet: Izmantojiet esošo", desc: "Jums jau ir lieta šīs vajadzības apmierināšanai. Izmantojiet to, kas jau pieder." },
+      WAIT_72H: { title: "⏳ Pievienojiet 30 dienu vēlmju sarakstam", desc: "Vēlme ir pārāk svaiga. Ierakstiet to sarakstā ar šodienas datumu un nogaidiet." },
+      REJECT_NOSPACE: { title: "❌ Nepērciet: Vispirms atbrīvojiet vietu", desc: "Kamēr mājās nav brīvas vietas šim priekšmetam, tas radīs nekārtību." },
+      REJECT_EXPENSIVE: { title: "❌ Nepērciet: Pārāk augsta dzīves laika cena", desc: "Ieguvums neatsver darba stundas, kas nepieciešamas šī pirkuma apmaksai." },
+      REJECT_NOVELTY: { title: "❌ Nepērciet: Īslaicīgs jaunums", desc: "Šo vēlmi vada īslaicīga aizrautība, nevis ilgtermiņa vajadzība." },
+      APPROVE_BUY: { title: "✅ Apzināts pirkums apstiprināts", desc: "Šī lieta atrisina patiesu vajadzību un kalpos ilgi. Pērciet ar mierīgu prātu." }
+    }
+  };
+
+  let currentStep = 0;
+  const questions = questionsData[lang] || questionsData.en;
+  const results = resultsData[lang] || resultsData.en;
+
+  function renderStep() {
+    const indicator = document.getElementById('step-indicator');
+    const qText = document.getElementById('question-text');
+    const qDesc = document.getElementById('question-desc');
+    const buttons = document.getElementById('decision-buttons');
+    const resultBox = document.getElementById('result-container');
+
+    if (!indicator || !qText || !qDesc || !buttons || !resultBox) return;
+
+    if (currentStep < questions.length) {
+      indicator.style.display = 'block';
+      indicator.textContent = lang === 'ru' ? `Шаг ${currentStep + 1} из 5` : lang === 'lv' ? `${currentStep + 1}. solis no 5` : `Step ${currentStep + 1} of 5`;
+      qText.textContent = questions[currentStep].q;
+      qDesc.textContent = questions[currentStep].desc;
+      buttons.style.display = 'flex';
+      resultBox.style.display = 'none';
+    }
+  }
+
+  function handleAction(action) {
+    if (action === 'NEXT') {
+      currentStep++;
+      if (currentStep >= questions.length) {
+        showResult('APPROVE_BUY');
+      } else {
+        renderStep();
+      }
+    } else {
+      showResult(action);
+    }
+  }
+
+  function showResult(resultKey) {
+    const indicator = document.getElementById('step-indicator');
+    const buttons = document.getElementById('decision-buttons');
+    const resultBox = document.getElementById('result-container');
+    const rTitle = document.getElementById('result-title');
+    const rDesc = document.getElementById('result-desc');
+
+    if (indicator) indicator.style.display = 'none';
+    if (buttons) buttons.style.display = 'none';
+    
+    const qContainer = document.querySelector('.question-container');
+    if (qContainer) qContainer.style.display = 'none';
+
+    if (resultBox && rTitle && rDesc) {
+      const res = results[resultKey] || results.APPROVE_BUY;
+      rTitle.textContent = res.title;
+      rDesc.textContent = res.desc;
+      resultBox.style.display = 'flex';
+    }
+  }
+
+  function setupEvents() {
+    const btnYes = document.getElementById('btn-yes');
+    const btnNo = document.getElementById('btn-no');
+    const btnRestart = document.getElementById('btn-restart');
+
+    if (btnYes) {
+      btnYes.onclick = () => handleAction(questions[currentStep].yesAction);
+    }
+    if (btnNo) {
+      btnNo.onclick = () => handleAction(questions[currentStep].noAction);
+    }
+    if (btnRestart) {
+      btnRestart.onclick = () => {
+        currentStep = 0;
+        const qContainer = document.querySelector('.question-container');
+        if (qContainer) qContainer.style.display = 'block';
+        renderStep();
+      };
+    }
+  }
+
+  renderStep();
+  setupEvents();
+</script>
+
+<style>
+  .breadcrumb {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-primary);
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .decision-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    min-height: 320px;
+  }
+
+  .step-progress {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+  }
+
+  .question-text {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+    margin-bottom: 0.6rem;
+  }
+
+  .question-explanation {
+    font-size: 1rem;
+    line-height: 1.55;
+  }
+
+  .decision-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1rem;
+  }
+
+  .btn-decision {
+    flex: 1;
+    padding: 0.85rem 1.5rem;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 8px;
+    transition: all 0.15s ease;
+    border: 1px solid var(--border-color);
+  }
+
+  .btn-yes {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+  }
+
+  .btn-yes:hover {
+    opacity: 0.85;
+  }
+
+  .btn-no {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+  }
+
+  .btn-no:hover {
+    border-color: var(--border-focus);
+  }
+
+  .result-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start;
+    padding-top: 1rem;
+  }
+
+  .result-title {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--text-primary);
+  }
+
+  .result-explanation {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+
+  .btn-restart {
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    color: var(--text-primary);
+    transition: all 0.15s;
+  }
+
+  .btn-restart:hover {
+    border-color: var(--border-focus);
+  }
+</style>

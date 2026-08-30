@@ -1,0 +1,234 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+
+const packs = [
+  {
+    id: 'writer',
+    title: t('packs.writer.title'),
+    desc: t('packs.writer.desc'),
+    tools: [
+      { name: 'Ghostwriter', role: 'Distraction-Free Drafting', category: 'text-and-writing' },
+      { name: 'Foliate', role: 'Calm E-Book & Manuscript Reading', category: 'media-and-readers' },
+      { name: 'NetNewsWire', role: 'Curated Research RSS Feeds', category: 'communication' },
+      { name: 'Syncthing', role: 'Private Peer-to-Peer Sync', category: 'system-utilities' },
+    ],
+  },
+  {
+    id: 'thinker',
+    title: t('packs.thinker.title'),
+    desc: t('packs.thinker.desc'),
+    tools: [
+      { name: 'Logseq', role: 'Local-First Outliner & Second Brain', category: 'note-taking' },
+      { name: 'Zathura', role: 'Keyboard-Driven PDF Reader', category: 'media-and-readers' },
+      { name: 'Todo.txt', role: 'Durable Plain-Text Task System', category: 'task-management' },
+      { name: 'Kopia', role: 'Encrypted Snapshot Backup', category: 'system-utilities' },
+    ],
+  },
+  {
+    id: 'dev',
+    title: t('packs.dev.title'),
+    desc: t('packs.dev.desc'),
+    tools: [
+      { name: 'Helix', role: 'Modal Rust Terminal Editor', category: 'text-and-writing' },
+      { name: 'Yazi', role: 'Asynchronous Terminal File Manager', category: 'system-utilities' },
+      { name: 'FSearch / Everything', role: 'Instant System File Indexing', category: 'system-utilities' },
+      { name: 'BorgBackup', role: 'Deduplicated Scriptable Backups', category: 'system-utilities' },
+    ],
+  },
+  {
+    id: 'detox',
+    title: t('packs.detox.title'),
+    desc: t('packs.detox.desc'),
+    tools: [
+      { name: 'Olauncher', role: 'Monochrome Text-Only Launcher', category: 'hardware-and-edc' },
+      { name: 'Onyx Boox Palma', role: 'Pocket E-ink Reader / Pocket Tool', category: 'hardware-and-edc' },
+      { name: 'Signal', role: 'Focused Private Communication', category: 'communication' },
+      { name: 'Plain Text Notes', role: 'Zero-Overhead Local Notes', category: 'note-taking' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title={`${t('section.packs.title')} — minimalist.lv`}
+  description={t('section.packs.subtitle')}
+  lang={lang}
+>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={`/${lang}/`}>{t('nav.home')}</a>
+      <span class="sep">/</span>
+      <a href={getLocalizedPath('/tools/', lang)}>{t('nav.tools')}</a>
+      <span class="sep">/</span>
+      <span class="current">{t('section.packs.title')}</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="category-badge mono">CURATED BUNDLES</div>
+      <h1 class="page-title">{t('section.packs.title')}</h1>
+      <p class="page-subtitle text-secondary">{t('section.packs.subtitle')}</p>
+    </header>
+
+    <div class="packs-grid">
+      {
+        packs.map((pack) => (
+          <div class="pack-card card" id={pack.id}>
+            <div class="pack-header">
+              <h2 class="pack-title">{pack.title}</h2>
+              <p class="pack-desc text-secondary">{pack.desc}</p>
+            </div>
+
+            <div class="pack-tools-list">
+              <span class="pack-tools-label mono text-muted">INCLUDED TOOLS:</span>
+              <ul class="pack-items">
+                {pack.tools.map((item) => (
+                  <li class="pack-tool-item">
+                    <a href={getLocalizedPath(`/tools/${item.category}/`, lang)} class="tool-link">
+                      <span class="tool-name">{item.name}</span>
+                      <span class="tool-role text-muted">{item.role}</span>
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-primary);
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+    max-width: 700px;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .packs-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+    gap: 1.5rem;
+  }
+
+  .pack-card {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    padding: 2rem;
+  }
+
+  .pack-title {
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.5rem;
+  }
+
+  .pack-desc {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .pack-tools-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.75rem;
+  }
+
+  .pack-items {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+  }
+
+  .pack-tool-item {
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+  }
+
+  .pack-tool-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .tool-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 1rem;
+  }
+
+  .tool-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--text-primary);
+  }
+
+  .tool-link:hover .tool-name {
+    text-decoration: underline;
+  }
+
+  .tool-role {
+    font-size: 0.8rem;
+    text-align: right;
+  }
+
+  @media (max-width: 640px) {
+    .packs-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

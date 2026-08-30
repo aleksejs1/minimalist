@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import ToolCard from '../../../components/ToolCard.astro';
+import { useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const allCategorySlugs = [
+    'text-and-writing',
+    'note-taking',
+    'web-browsing',
+    'communication',
+    'task-management',
+    'system-utilities',
+    'media-and-readers',
+    'hardware-and-edc',
+  ];
+
+  const paths = [];
+
+  for (const lang of Object.keys(languages)) {
+    for (const category of allCategorySlugs) {
+      paths.push({
+        params: { lang, category },
+      });
+    }
+  }
+
+  return paths;
+}
+
+const { lang, category } = Astro.params as { lang: SupportedLanguage; category: string };
+const t = useTranslations(lang);
+
+const allTools = await getCollection('tools', ({ id, data }) => 
+  id.startsWith(`${lang}/`) && data.category === category
+);
+
+const currentName = t(`category.${category}` as any) || category;
+const currentDesc = t(`category.${category}.desc` as any) || '';
+---
+
+<BaseLayout
+  title={`${currentName} — minimalist.lv`}
+  description={currentDesc}
+  lang={lang}
+>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={`/${lang}/`}>{t('nav.home')}</a>
+      <span class="sep">/</span>
+      <a href={getLocalizedPath('/tools/', lang)}>{t('nav.tools')}</a>
+      <span class="sep">/</span>
+      <span class="current">{currentName}</span>
+    </nav>
+
+    <header class="page-header">
+      <h1 class="page-title">{currentName}</h1>
+      <p class="page-subtitle text-secondary">{currentDesc}</p>
+    </header>
+
+    <div class="tools-list">
+      {allTools.map((tool) => (
+        <ToolCard tool={tool.data} lang={lang} />
+      ))}
+      {allTools.length === 0 && (
+        <p class="text-muted">Tools for this category are currently being curated.</p>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-primary);
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+    max-width: 760px;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .tools-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+</style>

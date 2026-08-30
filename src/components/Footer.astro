@@ -1,0 +1,124 @@
+---
+import { useTranslations, getLocalizedPath } from '../i18n/utils';
+import type { SupportedLanguage } from '../i18n/ui';
+
+interface Props {
+  lang: SupportedLanguage;
+}
+
+const { lang } = Astro.props;
+const t = useTranslations(lang);
+---
+
+<footer class="site-footer">
+  <div class="container footer-inner">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <span class="brand-name">minimalist.lv</span>
+        <p class="brand-tagline text-muted">{t('footer.tagline')}</p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-col">
+          <span class="col-title">{t('nav.guides')}</span>
+          <a href={getLocalizedPath('/guides/', lang)}>{t('section.guides.all')}</a>
+          <a href={getLocalizedPath('/guides/01-minimalism-manifesto/', lang)}>01. Manifesto</a>
+          <a href={getLocalizedPath('/guides/02-digital-hygiene-principles/', lang)}>02. Digital Hygiene</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">{t('nav.tools')}</span>
+          <a href={getLocalizedPath('/tools/text-and-writing/', lang)}>{t('category.text-and-writing')}</a>
+          <a href={getLocalizedPath('/tools/note-taking/', lang)}>{t('category.note-taking')}</a>
+        </div>
+        <div class="footer-col">
+          <span class="col-title">{t('nav.about')}</span>
+          <a href={getLocalizedPath('/about/', lang)}>{t('nav.about')}</a>
+          <a href={getLocalizedPath('/blog/', lang)}>{t('nav.blog')}</a>
+          <a href="https://github.com/aleksejs1/minimalist" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p class="footer-copy text-muted">{t('footer.builtWith')}</p>
+      <p class="footer-license text-muted">{t('footer.copyright')}</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer {
+    margin-top: auto;
+    border-top: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    padding: 3rem 0 2rem;
+    font-size: 0.875rem;
+  }
+
+  .footer-top {
+    display: flex;
+    justify-content: space-between;
+    gap: 2rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+
+  .brand-name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    color: var(--text-primary);
+  }
+
+  .brand-tagline {
+    font-size: 0.85rem;
+    margin-top: 0.25rem;
+  }
+
+  .footer-links {
+    display: flex;
+    gap: 3rem;
+    flex-wrap: wrap;
+  }
+
+  .footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .col-title {
+    font-weight: 600;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .footer-col a {
+    color: var(--text-secondary);
+    transition: color 0.15s ease;
+  }
+
+  .footer-col a:hover {
+    color: var(--text-primary);
+  }
+
+  .footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px solid var(--border-color);
+    padding-top: 1.5rem;
+    font-size: 0.8rem;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  @media (max-width: 640px) {
+    .footer-links {
+      gap: 1.5rem;
+    }
+  }
+</style>

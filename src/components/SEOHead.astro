@@ -1,0 +1,61 @@
+---
+import { languages, type SupportedLanguage } from '../i18n/ui';
+import { getLocalizedPath } from '../i18n/utils';
+
+interface Props {
+  title: string;
+  description: string;
+  lang: SupportedLanguage;
+  canonicalUrl?: string;
+  type?: 'website' | 'article';
+}
+
+const { title, description, lang, canonicalUrl, type = 'website' } = Astro.props;
+const siteUrl = 'https://minimalist.lv';
+const currentPath = Astro.url.pathname;
+const formattedTitle = title.includes('minimalist.lv') ? title : `${title} — minimalist.lv`;
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<meta name="generator" content={Astro.generator} />
+
+<title>{formattedTitle}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonicalUrl || `${siteUrl}${currentPath}`} />
+
+<!-- Alternate Languages -->
+{
+  Object.keys(languages).map((altLang) => (
+    <link
+      rel="alternate"
+      hreflang={altLang}
+      href={`${siteUrl}${getLocalizedPath(currentPath, altLang as SupportedLanguage)}`}
+    />
+  ))
+}
+<link
+  rel="alternate"
+  hreflang="x-default"
+  href={`${siteUrl}${getLocalizedPath(currentPath, 'en')}`}
+/>
+
+<!-- Open Graph / Meta -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={`${siteUrl}${currentPath}`} />
+<meta property="og:title" content={formattedTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:site_name" content="minimalist.lv" />
+<meta property="og:locale" content={lang} />
+
+<!-- Theme color & Anti-flash script -->
+<meta name="color-scheme" content="light dark" />
+<script is:inline>
+  const savedTheme = localStorage.getItem('theme');
+  if (savedTheme) {
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    document.documentElement.setAttribute('data-theme', 'dark');
+  }
+</script>
