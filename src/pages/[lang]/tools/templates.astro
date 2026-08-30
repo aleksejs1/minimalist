@@ -1,0 +1,275 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+
+const pageTitle = lang === 'ru'
+  ? 'Plain-Text Шаблоны'
+  : lang === 'lv'
+  ? 'Vienkāršā teksta veidnes'
+  : 'Plain-Text Minimalist Templates';
+
+const pageDesc = lang === 'ru'
+  ? 'Коллекция чистых текстовых файлов для организации дел, бюджета и цифрового порядка без привязки к проприетарным приложениям.'
+  : lang === 'lv'
+  ? 'Vienkāršā teksta veidņu krātuve uzdevumiem, budžetam un personīgajai kārtībai bez maksas lietotnēm.'
+  : 'Curated plain-text starter templates for to-dos, one-page budgets, and digital organization.';
+
+const templates = [
+  {
+    id: 'todotxt',
+    filename: 'todo.txt',
+    title: '1. Todo.txt Starter Kit',
+    desc: lang === 'ru' ? 'Шаблон списка задач с приоритетами (A-C), контекстами (@) и проектами (+).' : lang === 'lv' ? 'Uzdevumu saraksta veidne ar prioritātēm, kontekstiem un projektiem.' : 'Standard formatted task list with priorities (A-C), contexts (@), and projects (+).',
+    content: `(A) Call bank regarding mortgage rate review @phone +Finances
+(B) Complete drafting Chapter 3 of minimalism essay @computer +Writing
+(C) 30-minute evening walk in the park @nature +Health
+x 2026-08-30 Clean desk surface and cable tray @home +Organization
+Review 30-day wishlist buffer items @laptop +Finance`,
+  },
+  {
+    id: 'budget',
+    filename: 'budget.csv',
+    title: '2. One-Page Minimalist Budget (CSV)',
+    desc: lang === 'ru' ? 'Одностраничный реверсивный бюджет («Заплати сначала себе») для Excel/LibreOffice Calc.' : lang === 'lv' ? 'Vienas lapas budžeta veidne izdevumu un uzkrājumu kontrolei.' : 'Reverse cash-flow budget focusing on automatic savings before discretionary spending.',
+    content: `Category,Subcategory,Monthly Target (€),Notes
+INCOME,Primary Salary,2500,Net take-home pay
+SAVINGS,Freedom Buffer & Investments,750,Auto-transferred on payday (30%)
+FIXED,Rent & Utilities,850,Survival baseline
+FIXED,Groceries & Health,400,Wholesome simple foods
+VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
+  },
+  {
+    id: 'para',
+    filename: 'para-structure.txt',
+    title: '3. PARA Method Directory Structure',
+    desc: lang === 'ru' ? 'Плоская иерархия папок для облачных дисков и локальных файлов.' : lang === 'lv' ? 'Failu un mākoņu mapju struktūra pēc PARA metodoloģijas.' : 'Clean 4-folder taxonomy for desktop file systems and cloud archives.',
+    content: `📁 1_Projects/
+  ├── 2026-08_Minimalist-LV-Launch/
+  └── 2026-Tax-Filing/
+📁 2_Areas/
+  ├── Finance-and-Legal/
+  ├── Health-and-Medical/
+  └── Home-and-Automotive/
+📁 3_Resources/
+  ├── Book-Notes-and-Excerpts/
+  ├── Software-Configs/
+  └── Typography-Fonts/
+📁 4_Archive/
+  └── 2025_Completed-Projects/`,
+  },
+  {
+    id: 'wishlist',
+    filename: '30-day-wishlist.txt',
+    title: '4. 30-Day Wishlist Buffer',
+    desc: lang === 'ru' ? 'Буферный список спонтанных желаний для преодоления импульсивных трат.' : lang === 'lv' ? '30 dienu vēlmju nogaidīšanas saraksts pret impulsīviem pirkumiem.' : 'Plain-text delay queue to extinguish dopamine-driven shopping urges.',
+    content: `# 30-Day Impulse Wishlist Buffer
+# Rule: If still genuinely needed after 30 days, consider purchase.
+
+[2026-08-15] Mechanical Keyboard 65% (€110) -> Status: WAITING (Review on 2026-09-15)
+[2026-07-20] Smart Coffee Mug (€89) -> Status: DISCARDED (Urge passed, saved €89)
+[2026-07-01] Merino Wool Long-Sleeve (€75) -> Status: APPROVED (Purchased, daily wear)`,
+  },
+];
+---
+
+<BaseLayout
+  title={`${pageTitle} — minimalist.lv`}
+  description={pageDesc}
+  lang={lang}
+>
+  <div class="container">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={`/${lang}/`}>{t('nav.home')}</a>
+      <span class="sep">/</span>
+      <a href={getLocalizedPath('/tools/', lang)}>{t('nav.tools')}</a>
+      <span class="sep">/</span>
+      <span class="current">{pageTitle}</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="category-badge mono">PLAIN-TEXT RESOURCES</div>
+      <h1 class="page-title">{pageTitle}</h1>
+      <p class="page-subtitle text-secondary">{pageDesc}</p>
+    </header>
+
+    <div class="templates-list">
+      {
+        templates.map((tpl) => (
+          <div class="template-card card" id={tpl.id}>
+            <div class="template-header">
+              <div>
+                <h2 class="template-title">{tpl.title}</h2>
+                <p class="template-desc text-secondary">{tpl.desc}</p>
+              </div>
+              <span class="template-filename mono text-muted">{tpl.filename}</span>
+            </div>
+
+            <div class="code-container">
+              <pre class="template-code mono"><code>{tpl.content}</code></pre>
+            </div>
+
+            <div class="template-actions">
+              <button
+                type="button"
+                class="btn-action btn-copy mono"
+                onclick={`navigator.clipboard.writeText(${JSON.stringify(tpl.content)}).then(() => { this.textContent = '${lang === 'ru' ? '✓ Скопировано!' : lang === 'lv' ? '✓ Nokopēts!' : '✓ Copied!'}'; setTimeout(() => this.textContent = '${lang === 'ru' ? 'Копировать' : lang === 'lv' ? 'Kopēt' : 'Copy'}', 2000); })`}
+              >
+                {lang === 'ru' ? 'Копировать' : lang === 'lv' ? 'Kopēt' : 'Copy'}
+              </button>
+
+              <button
+                type="button"
+                class="btn-action btn-download mono"
+                onclick={`(() => { const b = new Blob([${JSON.stringify(tpl.content)}], {type: 'text/plain;charset=utf-8'}); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = '${tpl.filename}'; a.click(); })()`}
+              >
+                ↓ {lang === 'ru' ? 'Скачать файл' : lang === 'lv' ? 'Lejupielādēt' : 'Download File'}
+              </button>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .breadcrumb {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-primary);
+  }
+
+  .page-header {
+    margin-bottom: 3rem;
+    max-width: 760px;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .templates-list {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  .template-card {
+    padding: 2rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+  }
+
+  .template-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+
+  .template-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 0.25rem;
+  }
+
+  .template-desc {
+    font-size: 0.95rem;
+  }
+
+  .template-filename {
+    font-size: 0.8rem;
+    background-color: var(--bg-secondary);
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    border: 1px solid var(--border-color);
+  }
+
+  .code-container {
+    background-color: var(--bg-code);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow-x: auto;
+  }
+
+  .template-code {
+    padding: 1.25rem;
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.6;
+    color: var(--text-primary);
+  }
+
+  .template-actions {
+    display: flex;
+    gap: 0.75rem;
+  }
+
+  .btn-action {
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.5rem 1rem;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    transition: all 0.15s ease;
+  }
+
+  .btn-action:hover {
+    border-color: var(--border-focus);
+    background-color: var(--bg-card-hover);
+  }
+
+  .btn-download {
+    background-color: var(--accent);
+    color: var(--accent-contrast);
+    border-color: var(--accent);
+  }
+
+  .btn-download:hover {
+    opacity: 0.85;
+  }
+</style>

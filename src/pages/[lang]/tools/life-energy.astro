@@ -1,0 +1,346 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { useTranslations, getLocalizedPath } from '../../../i18n/utils';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
+
+export function getStaticPaths() {
+  return Object.keys(languages).map((lang) => ({
+    params: { lang },
+  }));
+}
+
+const { lang } = Astro.params as { lang: SupportedLanguage };
+const t = useTranslations(lang);
+
+const pageTitle = lang === 'ru' 
+  ? 'Калькулятор часов жизни' 
+  : lang === 'lv' 
+  ? 'Dzīves laika kalkulators' 
+  : 'Life Energy Calculator';
+
+const pageDesc = lang === 'ru'
+  ? 'Переведите цену любой покупки в реальные часы вашего труда и жизни.'
+  : lang === 'lv'
+  ? 'Pārvērtiet jebkura pirkuma cenu savās reālajās darba un dzīves stundās.'
+  : 'Calculate the real cost of any purchase in hours and days of your life energy.';
+---
+
+<BaseLayout
+  title={`${pageTitle} — minimalist.lv`}
+  description={pageDesc}
+  lang={lang}
+>
+  <div class="container-narrow">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href={`/${lang}/`}>{t('nav.home')}</a>
+      <span class="sep">/</span>
+      <a href={getLocalizedPath('/tools/', lang)}>{t('nav.tools')}</a>
+      <span class="sep">/</span>
+      <span class="current">{pageTitle}</span>
+    </nav>
+
+    <header class="page-header">
+      <div class="category-badge mono">LOCAL-FIRST CALCULATOR</div>
+      <h1 class="page-title">{pageTitle}</h1>
+      <p class="page-subtitle text-secondary">{pageDesc}</p>
+    </header>
+
+    <div class="calculator-card card">
+      <div class="input-grid">
+        <div class="input-group">
+          <label for="monthly-income" class="input-label">
+            {lang === 'ru' ? 'Чистый доход в месяц (€)' : lang === 'lv' ? 'Mēneša ienākumi "uz rokas" (€)' : 'Net Monthly Income (€)'}
+          </label>
+          <input
+            type="number"
+            id="monthly-income"
+            class="calc-input mono"
+            placeholder="2000"
+            min="1"
+            value="1800"
+          />
+        </div>
+
+        <div class="input-group">
+          <label for="weekly-hours" class="input-label">
+            {lang === 'ru' ? 'Рабочих часов в неделю' : lang === 'lv' ? 'Darba stundas nedēļā' : 'Work Hours Per Week'}
+          </label>
+          <input
+            type="number"
+            id="weekly-hours"
+            class="calc-input mono"
+            placeholder="40"
+            min="1"
+            max="100"
+            value="40"
+          />
+        </div>
+
+        <div class="input-group full-width">
+          <label for="item-price" class="input-label">
+            {lang === 'ru' ? 'Цена желаемой вещи (€)' : lang === 'lv' ? 'Iekārotās lietas cena (€)' : 'Price of the Desired Item (€)'}
+          </label>
+          <input
+            type="number"
+            id="item-price"
+            class="calc-input mono input-price"
+            placeholder="120"
+            min="1"
+            value="150"
+          />
+        </div>
+      </div>
+
+      <hr class="calc-divider" />
+
+      <div class="calc-results" id="calc-results">
+        <div class="result-highlight">
+          <span class="result-label mono text-muted">
+            {lang === 'ru' ? 'ЦЕНА ЭТОЙ ПОКУПКИ В ЧАСАХ ЖИЗНИ:' : lang === 'lv' ? 'ŠĪ PIRKUMA CENA DZĪVES STUNDĀS:' : 'REAL COST IN LIFE ENERGY:'}
+          </span>
+          <div class="result-number" id="result-energy">...</div>
+        </div>
+
+        <div class="metrics-row mono">
+          <div class="metric-box">
+            <span class="metric-lbl">{lang === 'ru' ? 'Чистая ставка / час' : lang === 'lv' ? 'Likme stundā' : 'Net Hourly Rate'}</span>
+            <span class="metric-val" id="metric-hourly">€0.00 / h</span>
+          </div>
+          <div class="metric-box">
+            <span class="metric-lbl">{lang === 'ru' ? 'Рабочих смен (по 8ч)' : lang === 'lv' ? 'Darba maiņas (8h)' : 'Work Shifts (8h)'}</span>
+            <span class="metric-val" id="metric-shifts">0 shifts</span>
+          </div>
+        </div>
+
+        <div class="result-reflection text-secondary" id="result-quote">
+          {lang === 'ru' 
+            ? '«Деньги — это то, за что мы расплачиваемся частицей своей жизни.» — Вики Робин'
+            : lang === 'lv'
+            ? '«Nauda ir kaut kas, ko mēs izpērkam ar savu dzīves laiku.» — Vikija Robina'
+            : '“Money is something we choose to trade our life energy for.” — Vicki Robin'}
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ lang }}>
+  function calculateLifeEnergy() {
+    const incomeInput = document.getElementById('monthly-income');
+    const hoursInput = document.getElementById('weekly-hours');
+    const priceInput = document.getElementById('item-price');
+
+    const resultEnergy = document.getElementById('result-energy');
+    const metricHourly = document.getElementById('metric-hourly');
+    const metricShifts = document.getElementById('metric-shifts');
+
+    if (!incomeInput || !hoursInput || !priceInput || !resultEnergy) return;
+
+    const income = parseFloat(incomeInput.value) || 0;
+    const weeklyHours = parseFloat(hoursInput.value) || 40;
+    const price = parseFloat(priceInput.value) || 0;
+
+    if (income <= 0 || price <= 0 || weeklyHours <= 0) {
+      resultEnergy.textContent = '—';
+      return;
+    }
+
+    const monthlyHours = weeklyHours * 4.333;
+    const hourlyRate = income / monthlyHours;
+    const totalHours = price / hourlyRate;
+
+    metricHourly.textContent = `€${hourlyRate.toFixed(2)} / h`;
+
+    const shifts = (totalHours / 8).toFixed(1);
+    metricShifts.textContent = lang === 'ru' ? `${shifts} смен` : lang === 'lv' ? `${shifts} maiņas` : `${shifts} shifts`;
+
+    const days = Math.floor(totalHours / 8);
+    const remainingHours = Math.floor(totalHours % 8);
+    const minutes = Math.round((totalHours - Math.floor(totalHours)) * 60);
+
+    let energyStr = '';
+    if (days > 0) {
+      energyStr += lang === 'ru' ? `${days} дн. ` : lang === 'lv' ? `${days} d. ` : `${days}d `;
+    }
+    energyStr += lang === 'ru' ? `${remainingHours} ч. ${minutes} мин.` : lang === 'lv' ? `${remainingHours} st. ${minutes} min.` : `${remainingHours}h ${minutes}m`;
+
+    resultEnergy.textContent = energyStr;
+  }
+
+  const inputs = ['monthly-income', 'weekly-hours', 'item-price'];
+  inputs.forEach(id => {
+    const el = document.getElementById(id);
+    if (el) el.addEventListener('input', calculateLifeEnergy);
+  });
+
+  calculateLifeEnergy();
+</script>
+
+<style>
+  .breadcrumb {
+    font-size: 0.8rem;
+    font-family: var(--font-mono);
+    color: var(--text-muted);
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+
+  .breadcrumb a {
+    color: var(--text-secondary);
+  }
+
+  .breadcrumb a:hover {
+    color: var(--text-primary);
+  }
+
+  .page-header {
+    margin-bottom: 2.5rem;
+  }
+
+  .category-badge {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+  }
+
+  .page-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    letter-spacing: -0.03em;
+    margin-bottom: 0.75rem;
+    color: var(--text-primary);
+  }
+
+  .page-subtitle {
+    font-size: 1.1rem;
+    line-height: 1.5;
+  }
+
+  .calculator-card {
+    padding: 2.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .input-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+
+  .input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .full-width {
+    grid-column: 1 / -1;
+  }
+
+  .input-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-primary);
+  }
+
+  .calc-input {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    outline: none;
+    transition: border-color 0.15s;
+  }
+
+  .calc-input:focus {
+    border-color: var(--border-focus);
+  }
+
+  .input-price {
+    font-size: 1.35rem;
+    font-weight: 700;
+  }
+
+  .calc-divider {
+    border: 0;
+    height: 1px;
+    background-color: var(--border-color);
+    margin: 0.5rem 0;
+  }
+
+  .calc-results {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .result-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    display: block;
+    margin-bottom: 0.25rem;
+  }
+
+  .result-number {
+    font-size: 2.75rem;
+    font-weight: 900;
+    color: var(--text-primary);
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+  }
+
+  .metrics-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .metric-box {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 0.75rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+    min-width: 160px;
+  }
+
+  .metric-lbl {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  .metric-val {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+  }
+
+  .result-reflection {
+    font-size: 0.9rem;
+    font-style: italic;
+    line-height: 1.5;
+    padding-top: 0.5rem;
+    border-top: 1px dashed var(--border-color);
+  }
+
+  @media (max-width: 640px) {
+    .input-grid {
+      grid-template-columns: 1fr;
+    }
+    .result-number {
+      font-size: 2.2rem;
+    }
+  }
+</style>

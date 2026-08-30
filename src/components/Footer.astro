@@ -27,13 +27,16 @@ const t = useTranslations(lang);
         </div>
         <div class="footer-col">
           <span class="col-title">{t('nav.tools')}</span>
-          <a href={getLocalizedPath('/tools/text-and-writing/', lang)}>{t('category.text-and-writing')}</a>
-          <a href={getLocalizedPath('/tools/note-taking/', lang)}>{t('category.note-taking')}</a>
+          <a href={getLocalizedPath('/tools/packs/', lang)}>{t('section.packs.title')}</a>
+          <a href={getLocalizedPath('/tools/decision-tree/', lang)}>{t('decisionTree.title')}</a>
+          <a href={getLocalizedPath('/tools/life-energy/', lang)}>{lang === 'ru' ? 'Калькулятор часов жизни' : lang === 'lv' ? 'Dzīves laika kalkulators' : 'Life Energy Calculator'}</a>
+          <a href={getLocalizedPath('/tools/templates/', lang)}>{lang === 'ru' ? 'Plain-Text шаблоны' : lang === 'lv' ? 'Vienkāršā teksta veidnes' : 'Plain-Text Templates'}</a>
         </div>
         <div class="footer-col">
           <span class="col-title">{t('nav.about')}</span>
           <a href={getLocalizedPath('/about/', lang)}>{t('nav.about')}</a>
           <a href={getLocalizedPath('/blog/', lang)}>{t('nav.blog')}</a>
+          <a href={`/${lang}/rss.xml`}>RSS Feed (XML)</a>
           <a href="https://github.com/aleksejs1/minimalist" target="_blank" rel="noopener noreferrer">GitHub</a>
         </div>
       </div>

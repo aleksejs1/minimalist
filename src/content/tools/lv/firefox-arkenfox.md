@@ -19,4 +19,21 @@ cons:
   - "Nepieciešama profila konfigurācija maksimālam privātumam"
 minimalistVerdict: "Uzticamākā izvēle tiem, kuri vēlas ātru, drošu un no reklāmām brīvu tīmekļa pārlūkošanu."
 ---
-Firefox ar Arkenfox konfigurāciju nodrošina mierīgu un privātu sērfošanu internetā.
+### Ieteicamā minimālistiskā `user.js` konfigurācija
+Ievietojiet šīs rindas failā `user.js` savā Firefox profila mapē, lai atslēgtu telemetriju un reklāmas saturu:
+
+```javascript
+// Telemetrijas un datu vākšanas atslēgšana
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.enabled", false);
+
+// Pocket un sponsorēto ciņu noņemšana
+user_pref("extensions.pocket.enabled", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+
+// Lasīšanas režīma un privātuma iestatījumi
+user_pref("reader.color_scheme", "sepia");
+user_pref("privacy.resistFingerprinting", true);
+```

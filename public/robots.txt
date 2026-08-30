@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://minimalist.lv/sitemap-index.xml

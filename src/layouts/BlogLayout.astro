@@ -24,7 +24,10 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
 ---
 
 <BaseLayout title={title} description={description} lang={lang} type="article">
-  <div class="container-narrow">
+  <!-- Reading Progress Bar -->
+  <div class="reading-progress-bar" id="reading-progress"></div>
+
+  <div class="container-narrow blog-layout-container">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href={`/${lang}/`}>{t('nav.home')}</a>
       <span class="sep">/</span>
@@ -39,6 +42,14 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
           <span class="week-badge mono">
             {weekNumber === 0 ? 'MANIFESTO / WELCOME' : `${t('meta.week').toUpperCase()} #${String(weekNumber).padStart(2, '0')}`}
           </span>
+          <button
+            type="button"
+            class="zen-toggle-btn mono"
+            id="zen-mode-toggle"
+            title="Toggle Zen Mode (Z)"
+          >
+            ☯ Zen Mode
+          </button>
         </div>
         <h1 class="blog-title">{title}</h1>
         <p class="blog-desc text-secondary">{description}</p>
@@ -72,7 +83,46 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
   </div>
 </BaseLayout>
 
+<script is:inline>
+  // Reading Progress Bar
+  window.addEventListener('scroll', () => {
+    const bar = document.getElementById('reading-progress');
+    if (!bar) return;
+    const totalHeight = document.documentElement.scrollHeight - window.innerHeight;
+    const progress = totalHeight > 0 ? (window.scrollY / totalHeight) * 100 : 0;
+    bar.style.width = progress + '%';
+  });
+
+  // Zen Mode Toggle
+  const zenBtn = document.getElementById('zen-mode-toggle');
+  if (zenBtn) {
+    zenBtn.addEventListener('click', () => {
+      document.body.classList.toggle('zen-mode-active');
+      const isActive = document.body.classList.contains('zen-mode-active');
+      zenBtn.textContent = isActive ? '✕ Exit Zen' : '☯ Zen Mode';
+    });
+
+    window.addEventListener('keydown', (e) => {
+      if (e.key === 'z' || e.key === 'Z') {
+        if (['INPUT', 'TEXTAREA'].includes(document.activeElement?.tagName || '')) return;
+        zenBtn.click();
+      }
+    });
+  }
+</script>
+
 <style>
+  .reading-progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 3px;
+    background-color: var(--accent);
+    width: 0%;
+    z-index: 1000;
+    transition: width 0.1s ease-out;
+  }
+
   .breadcrumb {
     font-size: 0.8rem;
     font-family: var(--font-mono);
@@ -97,13 +147,35 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
     border-bottom: 1px solid var(--border-color);
   }
 
+  .blog-meta-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.75rem;
+  }
+
   .week-badge {
     font-size: 0.75rem;
     font-weight: 700;
     color: var(--text-muted);
     letter-spacing: 0.05em;
-    display: block;
-    margin-bottom: 0.75rem;
+  }
+
+  .zen-toggle-btn {
+    font-size: 0.75rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 4px;
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.15s;
+  }
+
+  .zen-toggle-btn:hover {
+    color: var(--text-primary);
+    border-color: var(--border-focus);
   }
 
   .blog-title {
@@ -159,5 +231,17 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
 
   .back-link:hover {
     opacity: 0.75;
+  }
+
+  :global(body.zen-mode-active) .site-header,
+  :global(body.zen-mode-active) .site-footer,
+  :global(body.zen-mode-active) .breadcrumb {
+    display: none !important;
+  }
+
+  :global(body.zen-mode-active) .blog-layout-container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding-top: 3rem;
   }
 </style>

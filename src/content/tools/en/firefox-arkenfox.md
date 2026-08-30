@@ -19,4 +19,21 @@ cons:
   - "Requires initial user.js configuration for maximum privacy"
 minimalistVerdict: "The gold standard browser for users who value an open, independent web engine stripped of corporate noise."
 ---
-Firefox with Arkenfox user.js transforms standard browsing into a calm, private experience.
+### Recommended Minimalist `user.js` Configuration
+Place the following in your Firefox profile folder to eliminate telemetry, sponsored shortcuts, and pocket suggestions:
+
+```javascript
+// Disable telemetry & data collection
+user_pref("datareporting.healthreport.uploadEnabled", false);
+user_pref("toolkit.telemetry.unified", false);
+user_pref("toolkit.telemetry.enabled", false);
+
+// Disable Pocket & sponsored tiles
+user_pref("extensions.pocket.enabled", false);
+user_pref("browser.newtabpage.activity-stream.showSponsored", false);
+user_pref("browser.newtabpage.activity-stream.showSponsoredTopSites", false);
+
+// Minimalist Reader View defaults
+user_pref("reader.color_scheme", "sepia");
+user_pref("privacy.resistFingerprinting", true);
+```
