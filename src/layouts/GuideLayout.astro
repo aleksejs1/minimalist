@@ -4,6 +4,12 @@ import TOC from '../components/TOC.astro';
 import { useTranslations, getLocalizedPath } from '../i18n/utils';
 import type { SupportedLanguage } from '../i18n/ui';
 
+interface NavGuide {
+  title: string;
+  order: number;
+  slug: string;
+}
+
 interface Props {
   title: string;
   description: string;
@@ -13,9 +19,22 @@ interface Props {
   readingTime: number;
   lang: SupportedLanguage;
   headings: { depth: number; slug: string; text: string }[];
+  prevGuide?: NavGuide | null;
+  nextGuide?: NavGuide | null;
 }
 
-const { title, description, order, publishedDate, readingTime, lang, headings } = Astro.props;
+const {
+  title,
+  description,
+  order,
+  publishedDate,
+  readingTime,
+  lang,
+  headings,
+  prevGuide,
+  nextGuide,
+} = Astro.props;
+
 const t = useTranslations(lang);
 
 const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang === 'ru' ? 'ru-RU' : 'en-US', {
@@ -66,7 +85,32 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
         </div>
 
         <footer class="article-footer">
-          <hr />
+          <!-- Prev / Next Sequential Navigation -->
+          <div class="guide-nav-grid">
+            {
+              prevGuide ? (
+                <a href={getLocalizedPath(`/guides/${prevGuide.slug}/`, lang)} class="guide-nav-card prev-card card">
+                  <span class="guide-nav-label mono text-muted">← {lang === 'ru' ? 'Предыдущая статья' : lang === 'lv' ? 'Iepriekšējais ceļvedis' : 'Previous Guide'}</span>
+                  <span class="guide-nav-title">#{String(prevGuide.order).padStart(2, '0')}. {prevGuide.title}</span>
+                </a>
+              ) : (
+                <div class="guide-nav-placeholder" />
+              )
+            }
+
+            {
+              nextGuide ? (
+                <a href={getLocalizedPath(`/guides/${nextGuide.slug}/`, lang)} class="guide-nav-card next-card card">
+                  <span class="guide-nav-label mono text-muted">{lang === 'ru' ? 'Следующая статья' : lang === 'lv' ? 'Nākamais ceļvedis' : 'Next Guide'} →</span>
+                  <span class="guide-nav-title">#{String(nextGuide.order).padStart(2, '0')}. {nextGuide.title}</span>
+                </a>
+              ) : (
+                <div class="guide-nav-placeholder" />
+              )
+            }
+          </div>
+
+          <hr class="footer-divider" />
           <div class="footer-cta">
             <a href={getLocalizedPath('/guides/', lang)} class="back-link">
               ← {t('section.guides.all')}
@@ -219,7 +263,43 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
     margin-top: 4rem;
   }
 
-  .article-footer hr {
+  .guide-nav-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .guide-nav-card {
+    padding: 1.25rem 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    text-decoration: none;
+  }
+
+  .next-card {
+    text-align: right;
+  }
+
+  .guide-nav-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+  }
+
+  .guide-nav-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    line-height: 1.35;
+  }
+
+  .guide-nav-card:hover .guide-nav-title {
+    color: var(--accent);
+  }
+
+  .footer-divider {
     border: 0;
     height: 1px;
     background-color: var(--border-color);
@@ -261,6 +341,12 @@ const formattedDate = new Intl.DateTimeFormat(lang === 'lv' ? 'lv-LV' : lang ===
     }
     .article-title {
       font-size: 2rem;
+    }
+    .guide-nav-grid {
+      grid-template-columns: 1fr;
+    }
+    .next-card {
+      text-align: left;
     }
   }
 </style>

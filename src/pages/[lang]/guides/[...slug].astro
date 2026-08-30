@@ -1,21 +1,39 @@
 ---
 import GuideLayout from '../../../layouts/GuideLayout.astro';
 import { getCollection } from 'astro:content';
-import type { SupportedLanguage } from '../../../i18n/ui';
+import { languages, type SupportedLanguage } from '../../../i18n/ui';
 
 export async function getStaticPaths() {
   const allGuides = await getCollection('guides');
-  return allGuides.map((guide) => {
-    const [lang, ...slugParts] = guide.slug.split('/');
-    const slug = slugParts.join('/');
-    return {
-      params: { lang, slug },
-      props: { guide },
-    };
+
+  return Object.keys(languages).flatMap((lang) => {
+    const langGuides = allGuides
+      .filter((g) => g.slug.startsWith(`${lang}/`))
+      .sort((a, b) => a.data.order - b.data.order);
+
+    return langGuides.map((guide, index) => {
+      const cleanSlug = guide.slug.replace(`${lang}/`, '');
+      const prevGuide = index > 0 ? {
+        title: langGuides[index - 1].data.title,
+        order: langGuides[index - 1].data.order,
+        slug: langGuides[index - 1].slug.replace(`${lang}/`, ''),
+      } : null;
+
+      const nextGuide = index < langGuides.length - 1 ? {
+        title: langGuides[index + 1].data.title,
+        order: langGuides[index + 1].data.order,
+        slug: langGuides[index + 1].slug.replace(`${lang}/`, ''),
+      } : null;
+
+      return {
+        params: { lang, slug: cleanSlug },
+        props: { guide, prevGuide, nextGuide },
+      };
+    });
   });
 }
 
-const { guide } = Astro.props;
+const { guide, prevGuide, nextGuide } = Astro.props;
 const { lang } = Astro.params as { lang: SupportedLanguage };
 const { Content, headings } = await guide.render();
 ---
@@ -29,6 +47,8 @@ const { Content, headings } = await guide.render();
   readingTime={guide.data.readingTime}
   lang={lang}
   headings={headings}
+  prevGuide={prevGuide}
+  nextGuide={nextGuide}
 >
   <Content />
 </GuideLayout>
