@@ -2,7 +2,7 @@
 name: "MarkText"
 tagline: "Reāllaika vizuālais Markdown redaktors ar tīru, no trokšņa brīvu darba lauku"
 category: "text-and-writing"
-websiteUrl: "https://www.marktext.cc/"
+websiteUrl: "https://marktext.me/"
 sourceCodeUrl: "https://github.com/marktext/marktext"
 isOpenSource: true
 isOfflineFirst: true

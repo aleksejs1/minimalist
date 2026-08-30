@@ -2,7 +2,7 @@
 name: "MarkText"
 tagline: "Real-time inline WYSIWYG Markdown editor with a clean, clutter-free canvas"
 category: "text-and-writing"
-websiteUrl: "https://www.marktext.cc/"
+websiteUrl: "https://marktext.me/"
 sourceCodeUrl: "https://github.com/marktext/marktext"
 isOpenSource: true
 isOfflineFirst: true

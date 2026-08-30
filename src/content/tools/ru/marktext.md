@@ -2,7 +2,7 @@
 name: "MarkText"
 tagline: "Визуальный Markdown редактор с мгновенным форматированием на чистом холсте"
 category: "text-and-writing"
-websiteUrl: "https://www.marktext.cc/"
+websiteUrl: "https://marktext.me/"
 sourceCodeUrl: "https://github.com/marktext/marktext"
 isOpenSource: true
 isOfflineFirst: true
