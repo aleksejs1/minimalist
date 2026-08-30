@@ -52,7 +52,7 @@ VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
     id: 'para',
     filename: 'para-structure.txt',
     title: '3. PARA Method Directory Structure',
-    desc: lang === 'ru' ? 'Плоская иерархия папок для облачных дисков и локальных файлов.' : lang === 'lv' ? 'Failu un mākoņu mapju struktūra pēc PARA metodoloģijas.' : 'Clean 4-folder taxonomy for desktop file systems and cloud archives.',
+    desc: lang === 'ru' ? 'Плоская иерархия папок для облачных дисков и локальных файлов.' : lang === 'lv' ? 'Failu un mapju struktūra pēc PARA metodoloģijas.' : 'Clean 4-folder taxonomy for desktop file systems and cloud archives.',
     content: `📁 1_Projects/
   ├── 2026-08_Minimalist-LV-Launch/
   └── 2026-Tax-Filing/
@@ -105,7 +105,7 @@ VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
     <div class="templates-list">
       {
         templates.map((tpl) => (
-          <div class="template-card card" id={tpl.id}>
+          <div class="template-card card" id={tpl.id} data-filename={tpl.filename}>
             <div class="template-header">
               <div>
                 <h2 class="template-title">{tpl.title}</h2>
@@ -118,11 +118,12 @@ VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
               <pre class="template-code mono"><code>{tpl.content}</code></pre>
             </div>
 
+            <textarea class="template-raw" style="display:none;" readonly aria-hidden="true">{tpl.content}</textarea>
+
             <div class="template-actions">
               <button
                 type="button"
                 class="btn-action btn-copy mono"
-                onclick={`navigator.clipboard.writeText(${JSON.stringify(tpl.content)}).then(() => { this.textContent = '${lang === 'ru' ? '✓ Скопировано!' : lang === 'lv' ? '✓ Nokopēts!' : '✓ Copied!'}'; setTimeout(() => this.textContent = '${lang === 'ru' ? 'Копировать' : lang === 'lv' ? 'Kopēt' : 'Copy'}', 2000); })`}
               >
                 {lang === 'ru' ? 'Копировать' : lang === 'lv' ? 'Kopēt' : 'Copy'}
               </button>
@@ -130,7 +131,6 @@ VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
               <button
                 type="button"
                 class="btn-action btn-download mono"
-                onclick={`(() => { const b = new Blob([${JSON.stringify(tpl.content)}], {type: 'text/plain;charset=utf-8'}); const a = document.createElement('a'); a.href = URL.createObjectURL(b); a.download = '${tpl.filename}'; a.click(); })()`}
               >
                 ↓ {lang === 'ru' ? 'Скачать файл' : lang === 'lv' ? 'Lejupielādēt' : 'Download File'}
               </button>
@@ -141,6 +141,44 @@ VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
     </div>
   </div>
 </BaseLayout>
+
+<script is:inline define:vars={{ lang }}>
+  document.querySelectorAll('.template-card').forEach(card => {
+    const copyBtn = card.querySelector('.btn-copy');
+    const downloadBtn = card.querySelector('.btn-download');
+    const textarea = card.querySelector('.template-raw');
+    const filename = card.getAttribute('data-filename') || 'template.txt';
+
+    if (!textarea) return;
+    const content = textarea.value;
+
+    if (copyBtn) {
+      copyBtn.addEventListener('click', () => {
+        navigator.clipboard.writeText(content).then(() => {
+          const originalText = copyBtn.textContent;
+          copyBtn.textContent = lang === 'ru' ? '✓ Скопировано!' : lang === 'lv' ? '✓ Nokopēts!' : '✓ Copied!';
+          setTimeout(() => {
+            copyBtn.textContent = originalText;
+          }, 2000);
+        });
+      });
+    }
+
+    if (downloadBtn) {
+      downloadBtn.addEventListener('click', () => {
+        const blob = new Blob([content], { type: 'text/plain;charset=utf-8' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = filename;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        setTimeout(() => URL.revokeObjectURL(url), 1000);
+      });
+    }
+  });
+</script>
 
 <style>
   .breadcrumb {
@@ -255,6 +293,7 @@ VARIABLE,Discretionary & Culture,500,Guilt-free spending buffer`,
     border: 1px solid var(--border-color);
     background-color: var(--bg-secondary);
     color: var(--text-primary);
+    cursor: pointer;
     transition: all 0.15s ease;
   }
 

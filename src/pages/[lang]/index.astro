@@ -124,8 +124,15 @@ const categories = categorySlugs.map((slug) => ({
       </div>
     </section>
 
-    <!-- 3. Setup Packs & Interactive Flowchart Highlight -->
+    <!-- 3. Interactive Utilities & Bundles -->
     <section class="home-section">
+      <div class="section-header">
+        <div>
+          <h2 class="section-title">{lang === 'ru' ? 'Практические утилиты и сборки' : lang === 'lv' ? 'Praktiskie rīki un komplekti' : 'Interactive Utilities & Bundles'}</h2>
+          <p class="section-subtitle text-secondary">{lang === 'ru' ? 'Инструменты без трекинга для осознанных решений и цифрового порядка.' : lang === 'lv' ? 'Rīki bez izsekošanas apzinātiem lēmumiem un kārtībai.' : '100% local-first tools to assist mindful decisions and digital order.'}</p>
+        </div>
+      </div>
+
       <div class="utils-banner-grid">
         <a href={getLocalizedPath('/tools/packs/', lang)} class="banner-card card">
           <span class="mono banner-tag">CURATED BUNDLES</span>
@@ -135,10 +142,24 @@ const categories = categorySlugs.map((slug) => ({
         </a>
 
         <a href={getLocalizedPath('/tools/decision-tree/', lang)} class="banner-card card">
-          <span class="mono banner-tag">INTERACTIVE FLOWCHART</span>
+          <span class="mono banner-tag">DECISION TREE</span>
           <h3 class="banner-title">{t('decisionTree.title')}</h3>
           <p class="banner-desc text-secondary">{t('decisionTree.subtitle')}</p>
           <span class="banner-link mono">Start 5-Step Test →</span>
+        </a>
+
+        <a href={getLocalizedPath('/tools/life-energy/', lang)} class="banner-card card">
+          <span class="mono banner-tag">CALCULATOR</span>
+          <h3 class="banner-title">{t('lifeEnergy.title')}</h3>
+          <p class="banner-desc text-secondary">{t('lifeEnergy.subtitle')}</p>
+          <span class="banner-link mono">Calculate Hours →</span>
+        </a>
+
+        <a href={getLocalizedPath('/tools/templates/', lang)} class="banner-card card">
+          <span class="mono banner-tag">PLAIN-TEXT</span>
+          <h3 class="banner-title">{t('templates.title')}</h3>
+          <p class="banner-desc text-secondary">{t('templates.subtitle')}</p>
+          <span class="banner-link mono">View Templates →</span>
         </a>
       </div>
     </section>

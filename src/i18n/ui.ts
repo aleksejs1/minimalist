@@ -96,10 +96,14 @@ export const ui = {
     'packs.detox.title': '📱 The Digital Detox EDC',
     'packs.detox.desc': 'Reclaim hours of life energy by replacing algorithmic slot machines with calm tools.',
 
-    // Interactive Decision Tree
+    // Interactive Utilities
     'decisionTree.title': 'Should I Buy This?',
     'decisionTree.subtitle': 'A 5-step interactive decision flowchart to eliminate impulse purchases and buyer remorse.',
     'decisionTree.restart': 'Start Over',
+    'lifeEnergy.title': 'Life Energy Calculator',
+    'lifeEnergy.subtitle': 'Calculate the real cost of any purchase in hours and days of your working life.',
+    'templates.title': 'Plain-Text Templates',
+    'templates.subtitle': 'Ready-to-use plain text files for tasks (todo.txt), budgets, and PARA archives.',
 
     // Search & Misc
     'search.placeholder': 'Search guides, blog posts, and tools...',
@@ -202,10 +206,14 @@ export const ui = {
     'packs.detox.title': '📱 Набор цифрового детокса',
     'packs.detox.desc': 'Освобождение от дофаминовой зависимости через спокойные экраны и текст.',
 
-    // Interactive Decision Tree
+    // Interactive Utilities
     'decisionTree.title': 'Стоит ли это покупать?',
     'decisionTree.subtitle': 'Пошаговый интерактивный алгоритм из 5 вопросов для защиты от импульсивных покупок.',
     'decisionTree.restart': 'Начать заново',
+    'lifeEnergy.title': 'Калькулятор часов жизни',
+    'lifeEnergy.subtitle': 'Узнайте реальную стоимость любой покупки в часах и днях вашей работы.',
+    'templates.title': 'Plain-Text Шаблоны',
+    'templates.subtitle': 'Готовые текстовые файлы для задач (todo.txt), бюджета и структуры PARA.',
 
     // Search & Misc
     'search.placeholder': 'Поиск по статьям, блогу и программам...',
@@ -308,10 +316,14 @@ export const ui = {
     'packs.detox.title': '📱 Digitālā detoksa komplekts',
     'packs.detox.desc': 'Atbrīvošanās no ekrāna atkarības, izmantojot mierīgas teksta saskarnes.',
 
-    // Interactive Decision Tree
+    // Interactive Utilities
     'decisionTree.title': 'Vai man to pirkt?',
     'decisionTree.subtitle': '5 soļu interaktīvs lēmumu koks aizsardzībai pret impulsīviem pirkumiem.',
     'decisionTree.restart': 'Sākt no jauna',
+    'lifeEnergy.title': 'Dzīves laika kalkulators',
+    'lifeEnergy.subtitle': 'Uzziniet jebkura pirkuma patieso cenu savās darba un dzīves stundās.',
+    'templates.title': 'Vienkāršā teksta veidnes',
+    'templates.subtitle': 'Gatavas teksta veidnes uzdevumiem (todo.txt), budžetam un PARA arhīvam.',
 
     // Search & Misc
     'search.placeholder': 'Meklēt ceļvežos, emuārā un rīkos...',
