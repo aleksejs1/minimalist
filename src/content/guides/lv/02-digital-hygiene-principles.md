@@ -3,8 +3,8 @@ title: "Digitālās higiēnas pamatprincipi: Uzmanības kontroles atgūšana"
 description: "Praktisks ceļvedis veselīgu robežu noteikšanai ar tehnoloģijām, dopamīna slazdu novēršanai un viedierīču pārvēršanai mierīgos darba rīkos."
 order: 2
 category: "digital"
-publishedDate: 2026-01-08
-readingTime: 10
+publishedDate: 2026-06-06
+readingTime: 3
 draft: false
 ---
 

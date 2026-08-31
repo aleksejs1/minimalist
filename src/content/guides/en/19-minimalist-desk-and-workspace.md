@@ -3,8 +3,8 @@ title: "The Minimalist Workspace: Ergonomics & Visual Clarity"
 description: "How to eliminate cable nests, curate essential desk hardware, and design a calm physical workspace for maximum creative output."
 order: 19
 category: "work"
-publishedDate: 2026-04-30
-readingTime: 8
+publishedDate: 2026-08-25
+readingTime: 1
 draft: false
 ---
 

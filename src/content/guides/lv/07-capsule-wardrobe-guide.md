@@ -3,8 +3,8 @@ title: "Kapsulas garderobe: vienkāršība apģērbā"
 description: "Kā atbrīvoties no rīta izvēles noguruma un izveidot funkcionālu garderobi no 25–35 kvalitatīviem apģērba gabaliem."
 order: 7
 category: "physical"
-publishedDate: 2026-02-12
-readingTime: 10
+publishedDate: 2026-06-29
+readingTime: 1
 draft: false
 ---
 

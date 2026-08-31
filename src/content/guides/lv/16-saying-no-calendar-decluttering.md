@@ -3,8 +3,8 @@ title: "Māksla pateikt «Nē»: kalendāra atbrīvošana"
 description: "Kā piemērot esenciālismu ikdienas plāniem, noteikt skaidras robežas bez vainas sajūtas un aizsargāt brīvo laiku."
 order: 16
 category: "mindset"
-publishedDate: 2026-04-09
-readingTime: 8
+publishedDate: 2026-08-11
+readingTime: 1
 draft: false
 ---
 

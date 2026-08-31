@@ -3,8 +3,8 @@ title: "Informācijas diēta: trokšņa filtrēšana dziļām zināšanām"
 description: "Kā atbrīvoties no ziņu trauksmes, aizstāt algoritmu plūsmas ar RSS lasītājiem un koncentrēties uz paliekošām zināšanām."
 order: 12
 category: "digital"
-publishedDate: 2026-03-12
-readingTime: 8
+publishedDate: 2026-07-23
+readingTime: 1
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "Ilgtspējīgs minimālisms: Zero Waste un pārstrāde"
 description: "Kā apvienot vienkāršību ar ekoloģisko atbildību: ētiski atbrīvoties no liekā, labot nevis pirkt jaunu un 5R hierarhija."
 order: 8
 category: "physical"
-publishedDate: 2026-02-19
-readingTime: 9
+publishedDate: 2026-07-04
+readingTime: 1
 draft: false
 ---
 

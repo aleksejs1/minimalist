@@ -3,8 +3,8 @@ title: "The Minimalist Smartphone: Transforming a Casino into a Tool"
 description: "A tactical guide to silencing notifications, enabling grayscale, clearing your home screen, and establishing friction against reflex tapping."
 order: 10
 category: "digital"
-publishedDate: 2026-02-26
-readingTime: 9
+publishedDate: 2026-07-14
+readingTime: 2
 draft: false
 ---
 

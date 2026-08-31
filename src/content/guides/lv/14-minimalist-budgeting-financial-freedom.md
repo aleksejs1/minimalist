@@ -3,8 +3,8 @@ title: "Minimālistisks budžets un finansiālā brīvība"
 description: "Kā atteikties no čeku uzskaites ar apgrieztā budžeta metodi un izveidot drošības spilvenu finansiālai neatkarībai."
 order: 14
 category: "finance"
-publishedDate: 2026-03-26
-readingTime: 10
+publishedDate: 2026-08-02
+readingTime: 1
 draft: false
 ---
 

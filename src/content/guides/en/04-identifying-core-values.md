@@ -3,8 +3,8 @@ title: "Identifying Core Values: The Filter for Everything"
 description: "How to construct a clear personal values compass that naturally filters out non-essential commitments, material clutter, and mental noise."
 order: 4
 category: "philosophy"
-publishedDate: 2026-01-22
-readingTime: 9
+publishedDate: 2026-06-15
+readingTime: 2
 draft: false
 ---
 

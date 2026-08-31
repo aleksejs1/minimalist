@@ -3,8 +3,8 @@ title: "Patēriņa psiholoģija: cīņa ar impulsīviem pirkumiem"
 description: "Hedoniskais skrejceļš, Didro efekts un psiholoģiskie filtri pret mārketinga manipulācijām."
 order: 13
 category: "finance"
-publishedDate: 2026-03-19
-readingTime: 9
+publishedDate: 2026-07-28
+readingTime: 1
 draft: false
 ---
 

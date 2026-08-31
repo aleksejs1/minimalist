@@ -3,8 +3,8 @@ title: "Minimālistisks viedtālrunis: no spēļu automāta par rīku"
 description: "Praktisks ceļvedis tālruņa sakārtošanai: paziņojumu atslēgšana, tukšs sākuma ekrāns, pelēktoņu režīms un nevajadzīgas ritināšanas apturēšana."
 order: 10
 category: "digital"
-publishedDate: 2026-02-26
-readingTime: 9
+publishedDate: 2026-07-14
+readingTime: 1
 draft: false
 ---
 

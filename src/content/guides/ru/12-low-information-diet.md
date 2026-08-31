@@ -3,8 +3,8 @@ title: "Информационная диета: Фильтрация шума �
 description: "Как избавиться от тревоги бесконечных новостных лент, заменить кликбейт спокойным чтением RSS и сфокусироваться на знаниях высокой плотности."
 order: 12
 category: "digital"
-publishedDate: 2026-03-12
-readingTime: 8
+publishedDate: 2026-07-23
+readingTime: 1
 draft: false
 ---
 

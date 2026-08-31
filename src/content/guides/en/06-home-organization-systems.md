@@ -3,8 +3,8 @@ title: "Clean Home Architecture: Systems That Prevent Clutter"
 description: "How to design a self-maintaining living space through clear flat surfaces, the one-in-one-out rule, and dedicated storage homes."
 order: 6
 category: "physical"
-publishedDate: 2026-02-05
-readingTime: 9
+publishedDate: 2026-06-25
+readingTime: 2
 draft: false
 ---
 

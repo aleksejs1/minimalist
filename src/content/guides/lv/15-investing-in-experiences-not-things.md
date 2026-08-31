@@ -3,8 +3,8 @@ title: "Investīcijas pieredzē un attīstībā, nevis mantās"
 description: "Kāpēc pētījumi pierāda, ka atmiņas, kopīgi ceļojumi un apgūtas prasmes sniedz ilglaicīgu laimi."
 order: 15
 category: "finance"
-publishedDate: 2026-04-02
-readingTime: 8
+publishedDate: 2026-08-06
+readingTime: 1
 draft: false
 ---
 

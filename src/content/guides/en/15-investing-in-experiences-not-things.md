@@ -3,8 +3,8 @@ title: "Investing in Experiences Over Things"
 description: "Why psychological research proves memories, shared travel, health, and skill mastery generate compounding lifelong happiness."
 order: 15
 category: "finance"
-publishedDate: 2026-04-02
-readingTime: 8
+publishedDate: 2026-08-06
+readingTime: 1
 draft: false
 ---
 

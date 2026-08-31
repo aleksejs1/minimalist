@@ -3,8 +3,8 @@ title: "The Minimalism Manifesto: Making Room for What Truly Matters"
 description: "Why minimalism is not a set of dogmatic rules about counting spoons, but a powerful subtractive strategy for mental clarity, freedom, and intentional living."
 order: 1
 category: "philosophy"
-publishedDate: 2026-01-01
-readingTime: 8
+publishedDate: 2026-06-01
+readingTime: 4
 draft: false
 ---
 

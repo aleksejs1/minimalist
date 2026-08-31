@@ -3,8 +3,8 @@ title: "Minimalist Budgeting & Financial Independence"
 description: "How to eliminate tedious receipt tracking with automated reverse budgeting and build true autonomy through the FIRE framework."
 order: 14
 category: "finance"
-publishedDate: 2026-03-26
-readingTime: 10
+publishedDate: 2026-08-02
+readingTime: 1
 draft: false
 ---
 

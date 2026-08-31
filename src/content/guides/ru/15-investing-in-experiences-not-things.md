@@ -3,8 +3,8 @@ title: "Инвестиции в опыт и развитие вместо вещ
 description: "Почему научные исследования Корнеллского университета доказывают, что воспоминания и навыки приносят долгосрочное счастье."
 order: 15
 category: "finance"
-publishedDate: 2026-04-02
-readingTime: 8
+publishedDate: 2026-08-06
+readingTime: 1
 draft: false
 ---
 

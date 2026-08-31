@@ -3,8 +3,8 @@ title: "Фокус и глубокая работа: Продуктивност�
 description: "Почему многозадачность — неврологический миф, как переключение контекста утомляет мозг и как внедрить правило 3 главных задач."
 order: 20
 category: "work"
-publishedDate: 2026-05-07
-readingTime: 9
+publishedDate: 2026-08-30
+readingTime: 1
 draft: false
 ---
 

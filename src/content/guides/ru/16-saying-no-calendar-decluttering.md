@@ -3,8 +3,8 @@ title: "Искусство говорить «Нет»: Расхламление
 description: "Как применить эссенциализм к своему расписанию, научиться мягко отказывать без чувства вины и защитить свободное время."
 order: 16
 category: "mindset"
-publishedDate: 2026-04-09
-readingTime: 8
+publishedDate: 2026-08-11
+readingTime: 1
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "Pseidominimālisma mīti un slazdi"
 description: "Dogmatisku galējību, estētiskā patēriņa un toksiska perfekcionisma atmaskošana apzinātas dzīves praksē."
 order: 3
 category: "philosophy"
-publishedDate: 2026-01-15
-readingTime: 8
+publishedDate: 2026-06-10
+readingTime: 2
 draft: false
 ---
 

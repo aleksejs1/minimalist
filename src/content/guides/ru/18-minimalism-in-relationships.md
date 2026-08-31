@@ -3,8 +3,8 @@ title: "Минимализм в отношениях: Качество вмес�
 description: "Число Данбара, сокращение истощающих поверхностных связей и культура неделимого внимания в общении с близкими."
 order: 18
 category: "mindset"
-publishedDate: 2026-04-23
-readingTime: 8
+publishedDate: 2026-08-21
+readingTime: 1
 draft: false
 ---
 

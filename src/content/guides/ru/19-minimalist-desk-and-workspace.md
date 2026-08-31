@@ -3,8 +3,8 @@ title: "Минималистичное рабочее место: Эргоном
 description: "Как избавиться от проводов, убрать визуальный шум со стола и оборудовать физическое рабочее пространство для глубокой концентрации."
 order: 19
 category: "work"
-publishedDate: 2026-04-30
-readingTime: 8
+publishedDate: 2026-08-25
+readingTime: 1
 draft: false
 ---
 

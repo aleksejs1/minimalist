@@ -3,8 +3,8 @@ title: "Roots and Evolution: From Stoics and Zen to the Modern World"
 description: "How ancient philosophy, Japanese aesthetics, and Bauhaus design shaped the modern minimalist movement."
 order: 9
 category: "philosophy"
-publishedDate: 2026-08-30
-readingTime: 9
+publishedDate: 2026-07-09
+readingTime: 5
 ---
 
 ## Introduction: An Ancient Answer to Modern Noise

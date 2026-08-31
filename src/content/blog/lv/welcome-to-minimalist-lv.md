@@ -2,10 +2,10 @@
 title: "Laipni lūgti minimalist.lv: Kāpēc mēs izveidojām šo vietu"
 description: "Iepazīšanās ar projektu minimalist.lv — kāpēc mēs veidojam 100% statisku, izsekotājiem brīvu vietni par apzinātas vienkāršības mākslu mūsdienu trokšņainajā pasaulē."
 weekNumber: 0
-season: "winter"
-publishedDate: 2026-01-01
+season: "summer"
+publishedDate: 2026-06-01
 tags: ["manifests", "sveiciens", "filozofija"]
-readingTimeMinutes: 4
+readingTimeMinutes: 2
 author: "minimalist.lv redakcija"
 draft: false
 ---

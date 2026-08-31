@@ -3,8 +3,8 @@ title: "The Art of Saying No: Decluttering Your Calendar"
 description: "How to apply essentialism to your schedule, set firm boundaries without guilt, and protect empty white space for genuine rest."
 order: 16
 category: "mindset"
-publishedDate: 2026-04-09
-readingTime: 8
+publishedDate: 2026-08-11
+readingTime: 1
 draft: false
 ---
 

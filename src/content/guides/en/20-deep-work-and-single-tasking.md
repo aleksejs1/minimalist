@@ -3,8 +3,8 @@ title: "Deep Work & Single-Tasking: Productivity Through Subtraction"
 description: "Why multitasking is a neurological impossibility, how context switching taxes your brain, and the power of the Rule of 3."
 order: 20
 category: "work"
-publishedDate: 2026-05-07
-readingTime: 9
+publishedDate: 2026-08-30
+readingTime: 1
 draft: false
 ---
 

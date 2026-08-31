@@ -3,8 +3,8 @@ title: "Минималистичное бюджетирование и фина�
 description: "Как отказаться от ручного учета чеков с помощью автоматизации и построить финансовую подушку безопасности по методологии FIRE."
 order: 14
 category: "finance"
-publishedDate: 2026-03-26
-readingTime: 10
+publishedDate: 2026-08-02
+readingTime: 1
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "Минималистичный смартфон: Превращение 
 description: "Пошаговая инструкция по настройке смартфона: отключение уведомлений, пустой рабочий стол, черно-белый экран и полезный барьер трения."
 order: 10
 category: "digital"
-publishedDate: 2026-02-26
-readingTime: 9
+publishedDate: 2026-07-14
+readingTime: 1
 draft: false
 ---
 

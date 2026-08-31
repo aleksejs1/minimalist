@@ -3,8 +3,8 @@ title: "Психология потребления: Как победить и�
 description: "Гедонистическая беговая дорожка, эффект Дидро и проверенные психологические фильтры против маркетинговых манипуляций."
 order: 13
 category: "finance"
-publishedDate: 2026-03-19
-readingTime: 9
+publishedDate: 2026-07-28
+readingTime: 1
 draft: false
 ---
 

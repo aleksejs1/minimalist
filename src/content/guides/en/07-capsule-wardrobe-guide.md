@@ -3,8 +3,8 @@ title: "The Capsule Wardrobe Blueprint: Simplicity in What You Wear"
 description: "How to eliminate morning decision fatigue by building an interchangeable, durable wardrobe of 25–35 quality pieces."
 order: 7
 category: "physical"
-publishedDate: 2026-02-12
-readingTime: 10
+publishedDate: 2026-06-29
+readingTime: 2
 draft: false
 ---
 

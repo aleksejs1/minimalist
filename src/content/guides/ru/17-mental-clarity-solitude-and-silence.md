@@ -3,8 +3,8 @@ title: "Ментальный детокс: Практика тишины и уе
 description: "Почему современный человек страдает от дефицита уединения и как ежедневные периоды сенсорной тишины восстанавливают мозг."
 order: 17
 category: "mindset"
-publishedDate: 2026-04-16
-readingTime: 8
+publishedDate: 2026-08-16
+readingTime: 1
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "Saknes un evolūcija: No stoiķiem un dzen līdz mūsdienām"
 description: "Kā antīkā filozofija, japāņu estētika un Bauhaus dizains veidoja mūsdienu apzināta vienkāršuma kustību."
 order: 9
 category: "philosophy"
-publishedDate: 2026-08-30
-readingTime: 9
+publishedDate: 2026-07-09
+readingTime: 4
 ---
 
 ## Ievads: Senā atbilde uz mūsdienu troksni

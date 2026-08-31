@@ -3,8 +3,8 @@ title: "Myths and Traps of Pseudo-Minimalism"
 description: "Debunking the dogmatic extremes, aesthetic consumerism, and toxic perfectionism that hijack the genuine practice of intentional living."
 order: 3
 category: "philosophy"
-publishedDate: 2026-01-15
-readingTime: 8
+publishedDate: 2026-06-10
+readingTime: 2
 draft: false
 ---
 

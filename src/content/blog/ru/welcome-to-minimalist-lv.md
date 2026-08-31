@@ -2,10 +2,10 @@
 title: "Добро пожаловать в minimalist.lv: Зачем создан этот проект"
 description: "Манифест и знакомство с проектом minimalist.lv — почему мы строим 100% статический сайт без трекеров, посвященный искусству и практике осознанной простоты."
 weekNumber: 0
-season: "winter"
-publishedDate: 2026-01-01
+season: "summer"
+publishedDate: 2026-06-01
 tags: ["манифест", "приветствие", "философия"]
-readingTimeMinutes: 4
+readingTimeMinutes: 2
 author: "Редакция minimalist.lv"
 draft: false
 ---

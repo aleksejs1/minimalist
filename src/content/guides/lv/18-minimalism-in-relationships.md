@@ -3,8 +3,8 @@ title: "Minimālisms attiecībās: kvalitāte sociālā trokšņa vietā"
 description: "Danbara skaitlis, virspusēju kontaktu mazināšana un nedalītas uzmanības kultūra ar tuvākajiem cilvēkiem."
 order: 18
 category: "mindset"
-publishedDate: 2026-04-23
-readingTime: 8
+publishedDate: 2026-08-21
+readingTime: 1
 draft: false
 ---
 

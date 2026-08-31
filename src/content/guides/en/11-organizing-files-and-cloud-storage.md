@@ -3,8 +3,8 @@ title: "Organizing Digital Files & Clouds: The Flat Storage System"
 description: "How to eliminate digital hoarding, structure cloud archives with the PARA method, and build an effortless 3-2-1 backup strategy."
 order: 11
 category: "digital"
-publishedDate: 2026-03-05
-readingTime: 10
+publishedDate: 2026-07-18
+readingTime: 2
 draft: false
 ---
 

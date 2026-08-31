@@ -3,8 +3,8 @@ title: "Minimalism in Relationships: Quality Over Social Noise"
 description: "Dunbar's number, cutting draining superficial obligations, and cultivating undivided attention with your closest circle."
 order: 18
 category: "mindset"
-publishedDate: 2026-04-23
-readingTime: 8
+publishedDate: 2026-08-21
+readingTime: 1
 draft: false
 ---
 

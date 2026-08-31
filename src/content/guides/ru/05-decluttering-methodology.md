@@ -3,8 +3,8 @@ title: "Полная методология расхламления: Пошаг
 description: "Как системно очистить дом от физического хлама без усталости от решений, чувства вины и ловушки невозвратных затрат."
 order: 5
 category: "physical"
-publishedDate: 2026-01-29
-readingTime: 11
+publishedDate: 2026-06-20
+readingTime: 2
 draft: false
 ---
 

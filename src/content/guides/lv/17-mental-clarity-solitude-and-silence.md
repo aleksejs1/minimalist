@@ -3,8 +3,8 @@ title: "Garīgais miers un klusums: vientulības māksla"
 description: "Kāpēc mūsdienu cilvēks cieš no klusuma trūkuma un kā sensorais miers atjauno prāta skaidrību."
 order: 17
 category: "mindset"
-publishedDate: 2026-04-16
-readingTime: 8
+publishedDate: 2026-08-16
+readingTime: 1
 draft: false
 ---
 

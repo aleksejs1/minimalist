@@ -3,8 +3,8 @@ title: "Мифы и ловушки псевдоминимализма"
 description: "Разбор догматичных крайностей, эстетического консьюмеризма и токсичного перфекционизма, искажающих суть осознанной простоты."
 order: 3
 category: "philosophy"
-publishedDate: 2026-01-15
-readingTime: 8
+publishedDate: 2026-06-10
+readingTime: 2
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "The Complete Decluttering Methodology: A Step-by-Step Blueprint"
 description: "How to systematically clear physical clutter from your home without decision fatigue, guilt, or the paralysis of sunk cost bias."
 order: 5
 category: "physical"
-publishedDate: 2026-01-29
-readingTime: 11
+publishedDate: 2026-06-20
+readingTime: 2
 draft: false
 ---
 

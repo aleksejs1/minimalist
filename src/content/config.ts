@@ -9,7 +9,7 @@ const guidesCollection = defineCollection({
     category: z.enum(['philosophy', 'digital', 'physical', 'mindset', 'finance', 'work']),
     publishedDate: z.coerce.date(),
     updatedDate: z.coerce.date().optional(),
-    readingTime: z.number().default(8),
+    readingTime: z.number().default(3),
     draft: z.boolean().default(false),
   }),
 });
@@ -23,7 +23,7 @@ const blogCollection = defineCollection({
     season: z.enum(['winter', 'spring', 'summer', 'autumn']),
     publishedDate: z.coerce.date(),
     tags: z.array(z.string()).default([]),
-    readingTimeMinutes: z.number().default(5),
+    readingTimeMinutes: z.number().default(3),
     author: z.string().default('minimalist.lv'),
     draft: z.boolean().default(false),
   }),

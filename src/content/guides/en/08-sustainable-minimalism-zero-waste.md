@@ -3,8 +3,8 @@ title: "Sustainable Minimalism: Zero Waste & The Circular Economy"
 description: "How to merge minimalism with ecological responsibility: responsible disposal, repairing over replacing, and the 5R hierarchy."
 order: 8
 category: "physical"
-publishedDate: 2026-02-19
-readingTime: 9
+publishedDate: 2026-07-04
+readingTime: 2
 draft: false
 ---
 

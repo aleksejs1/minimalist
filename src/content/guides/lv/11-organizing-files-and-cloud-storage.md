@@ -3,8 +3,8 @@ title: "Kārtība failos un mākoņos: vienkārša glabāšanas sistēma"
 description: "Kā novērst digitālo uzkrāšanu, sakārtot mākoņus ar PARA metodi un izveidot drošu 3-2-1 rezerves kopiju stratēģiju."
 order: 11
 category: "digital"
-publishedDate: 2026-03-05
-readingTime: 10
+publishedDate: 2026-07-18
+readingTime: 1
 draft: false
 ---
 

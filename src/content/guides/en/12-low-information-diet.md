@@ -3,8 +3,8 @@ title: "The Low-Information Diet: Filtering Noise for Deep Knowledge"
 description: "How to escape 24/7 breaking news anxiety, replace algorithmic outrage feeds with RSS readers, and focus on high-density ideas."
 order: 12
 category: "digital"
-publishedDate: 2026-03-12
-readingTime: 8
+publishedDate: 2026-07-23
+readingTime: 2
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "Манифест минимализма: Освобождение мес
 description: "Почему минимализм — это не догматичный подсчет ложек, а мощная стратегия вычитания ради ясности ума, личной свободы и осознанной жизни."
 order: 1
 category: "philosophy"
-publishedDate: 2026-01-01
-readingTime: 8
+publishedDate: 2026-06-01
+readingTime: 3
 draft: false
 ---
 

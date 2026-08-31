@@ -3,8 +3,8 @@ title: "Fokuss un dziļš darbs: produktivitāte caur vienkāršību"
 description: "Kāpēc vairākuzdevumu režīms ir mīts, kā konteksta maiņa nogurdina prātu un 3 galveno uzdevumu likuma spēks."
 order: 20
 category: "work"
-publishedDate: 2026-05-07
-readingTime: 9
+publishedDate: 2026-08-30
+readingTime: 1
 draft: false
 ---
 

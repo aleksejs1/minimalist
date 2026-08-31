@@ -3,8 +3,8 @@ title: "Минимализм и устойчивость: Zero Waste и пере
 description: "Как объединить простоту с заботой об экологии: этичное расхламление, ремонт вместо покупок и иерархия 5R."
 order: 8
 category: "physical"
-publishedDate: 2026-02-19
-readingTime: 9
+publishedDate: 2026-07-04
+readingTime: 1
 draft: false
 ---
 

@@ -3,8 +3,8 @@ title: "The Psychology of Consumption: Defeating Impulse Buying"
 description: "Understanding the hedonic treadmill, the Diderot effect, and how to build mental firewalls against retail marketing triggers."
 order: 13
 category: "finance"
-publishedDate: 2026-03-19
-readingTime: 9
+publishedDate: 2026-07-28
+readingTime: 2
 draft: false
 ---
 

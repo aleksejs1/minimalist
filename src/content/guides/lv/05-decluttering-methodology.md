@@ -3,8 +3,8 @@ title: "Mājokļa atbrīvošanas metodika: soli pa solim"
 description: "Kā sistemātiski atbrīvot mājokli no fiziskā trokšņa bez vainas apziņas un atlikto lēmumu sloga."
 order: 5
 category: "physical"
-publishedDate: 2026-01-29
-readingTime: 11
+publishedDate: 2026-06-20
+readingTime: 2
 draft: false
 ---
 

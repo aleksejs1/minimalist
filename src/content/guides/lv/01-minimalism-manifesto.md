@@ -3,8 +3,8 @@ title: "Minimālisma manifests: Atbrīvojot vietu patiesi svarīgajam"
 description: "Kāpēc minimālisms nav dogmatiska karošu skaitīšana, bet spēcīga atņemšanas stratēģija garīgai skaidrībai, brīvībai un apzinātai dzīvei."
 order: 1
 category: "philosophy"
-publishedDate: 2026-01-01
-readingTime: 8
+publishedDate: 2026-06-01
+readingTime: 3
 draft: false
 ---
 

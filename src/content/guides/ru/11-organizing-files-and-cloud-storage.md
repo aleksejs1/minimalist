@@ -3,8 +3,8 @@ title: "Порядок в файлах и облаках: Система пло�
 description: "Как победить цифровое накопительство, навести порядок в архивах по методологии PARA и настроить надежное резервное копирование 3-2-1."
 order: 11
 category: "digital"
-publishedDate: 2026-03-05
-readingTime: 10
+publishedDate: 2026-07-18
+readingTime: 1
 draft: false
 ---
 

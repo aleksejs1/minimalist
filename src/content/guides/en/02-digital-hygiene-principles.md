@@ -3,8 +3,8 @@ title: "Digital Hygiene: Reclaiming Autonomy from Algorithms"
 description: "A foundational blueprint for establishing deliberate boundaries with screens, eliminating dopamine traps, and transforming your devices into quiet, intentional tools."
 order: 2
 category: "digital"
-publishedDate: 2026-01-08
-readingTime: 10
+publishedDate: 2026-06-06
+readingTime: 3
 draft: false
 ---
 

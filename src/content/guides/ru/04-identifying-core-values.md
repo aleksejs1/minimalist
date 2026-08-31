@@ -3,8 +3,8 @@ title: "Аудит жизни и определение ключевых цен�
 description: "Как построить внутренний ценностный компас, который автоматически отсекает лишние обязательства, материальный хлам и ментальный шум."
 order: 4
 category: "philosophy"
-publishedDate: 2026-01-22
-readingTime: 9
+publishedDate: 2026-06-15
+readingTime: 2
 draft: false
 ---
 

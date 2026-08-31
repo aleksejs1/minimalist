@@ -3,8 +3,8 @@ title: "Капсульный гардероб: Универсальный под
 description: "Как избавиться от утренней усталости от выбора и собрать функциональный гардероб из 25–35 качественных сочетаемых вещей."
 order: 7
 category: "physical"
-publishedDate: 2026-02-12
-readingTime: 10
+publishedDate: 2026-06-29
+readingTime: 2
 draft: false
 ---
 

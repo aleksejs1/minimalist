@@ -3,8 +3,8 @@ title: "Pamatvērtību noteikšana: filtrs visam liekajam"
 description: "Kā izveidot personīgo vērtību kompasu, kas dabiski atsijā nesvarīgus pienākumus, liekas mantas un ikdienas troksni."
 order: 4
 category: "philosophy"
-publishedDate: 2026-01-22
-readingTime: 9
+publishedDate: 2026-06-15
+readingTime: 1
 draft: false
 ---
 

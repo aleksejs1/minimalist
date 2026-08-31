@@ -3,8 +3,8 @@ title: "Minimālistiska darba vieta: ergonomika un vizuālais miers"
 description: "Kā novērst vadu nekārtību, atbrīvot rakstāmgaldu no liekā un iekārtot vidi dziļam darbam."
 order: 19
 category: "work"
-publishedDate: 2026-04-30
-readingTime: 8
+publishedDate: 2026-08-25
+readingTime: 1
 draft: false
 ---
 

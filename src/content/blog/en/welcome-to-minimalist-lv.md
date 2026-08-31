@@ -2,10 +2,10 @@
 title: "Welcome to minimalist.lv: Why We Built This Space"
 description: "An introduction to minimalist.lv — why we are building a 100% static, tracker-free portal dedicated to the art and practice of intentional simplicity in a noisy world."
 weekNumber: 0
-season: "winter"
-publishedDate: 2026-01-01
+season: "summer"
+publishedDate: 2026-06-01
 tags: ["manifesto", "welcome", "philosophy"]
-readingTimeMinutes: 4
+readingTimeMinutes: 2
 author: "minimalist.lv editorial"
 draft: false
 ---
