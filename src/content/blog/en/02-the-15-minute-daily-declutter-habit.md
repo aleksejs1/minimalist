@@ -82,7 +82,7 @@ By stopping on a high note before exhaustion hits, you leave your brain with a s
 
 It is easy to underestimate what 15 minutes a day can accomplish:
 
-$$\text{15 minutes/day} \times 30 \text{ days} = 7.5 \text{ hours of laser-focused clarity}$$
+> **15 minutes / day × 30 days = 7.5 hours of laser-focused clarity**
 
 In just one month, without sacrificing a single sunny weekend or feeling overwhelmed, you will have completely revitalized **30 distinct areas of your home**. 
 

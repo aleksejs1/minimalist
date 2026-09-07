@@ -82,7 +82,7 @@ Pabeidzot sprintu enerģijas pacēlumā pirms noguruma iestāšanās, jūs nosti
 
 Ir viegli nenovērtēt 15 minūtes dienā. Taču aplūkojiet vienkāršu matemātiku:
 
-$$\text{15 minūtes dienā} \times 30 \text{ dienas} = 7{,}5 \text{ stundas kristāldzidra fokusa}$$
+> **15 minūtes dienā × 30 dienas = 7,5 stundas kristāldzidra fokusa**
 
 Tikai viena mēneša laikā, neupurējot nevienu saulainu brīvdienu un nepiedzīvojot stresu, jūs būsiet pilnībā atjaunojuši **30 atsevišķas sava mājokļa zonas**.
 
