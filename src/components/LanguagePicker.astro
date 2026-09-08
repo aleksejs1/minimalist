@@ -21,6 +21,7 @@ const currentPath = Astro.url.pathname;
           class={`lang-link ${isCurrent ? 'active' : ''}`}
           aria-current={isCurrent ? 'page' : undefined}
           title={label}
+          onclick={`try{localStorage.setItem('preferred_lang','${code}')}catch(e){}`}
         >
           {code.toUpperCase()}
         </a>

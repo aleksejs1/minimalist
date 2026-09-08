@@ -1,4 +1,60 @@
 ---
-// Root redirect to default locale
-return Astro.redirect('/en/');
+// Root redirect & automatic language detector
 ---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="robots" content="noindex, follow" />
+    <title>minimalist.lv</title>
+    <meta http-equiv="refresh" content="0;url=/en/" />
+    <script is:inline>
+      (function () {
+        const supported = ['ru', 'lv', 'en'];
+        let target = 'en';
+
+        try {
+          const saved = localStorage.getItem('preferred_lang');
+          if (saved && supported.includes(saved)) {
+            target = saved;
+          } else {
+            const languages = navigator.languages || [navigator.language || ''];
+            for (const lang of languages) {
+              if (!lang) continue;
+              const code = lang.toLowerCase().split('-')[0];
+              if (supported.includes(code)) {
+                target = code;
+                break;
+              }
+            }
+          }
+        } catch (e) {}
+
+        window.location.replace('/' + target + '/');
+      })();
+    </script>
+    <style>
+      :root {
+        color-scheme: light dark;
+      }
+      body {
+        background-color: #ffffff;
+        margin: 0;
+      }
+      @media (prefers-color-scheme: dark) {
+        body {
+          background-color: #0f1115;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <noscript>
+      <meta http-equiv="refresh" content="0;url=/en/" />
+      <p style="text-align: center; padding: 2rem; font-family: sans-serif;">
+        Redirecting to <a href="/en/">English</a> | <a href="/lv/">Latviešu</a> | <a href="/ru/">Русский</a>
+      </p>
+    </noscript>
+  </body>
+</html>
