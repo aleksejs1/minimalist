@@ -1,1 +1,1 @@
-{"version":"1.5.2","languages":{"lv":{"hash":"lv_abb4e9ae48","wasm":null,"page_count":43},"en":{"hash":"en_d79cb13685","wasm":"en","page_count":43},"ru":{"hash":"ru_6bb42d862f","wasm":"ru","page_count":43}},"include_characters":["_","‿","⁀","⁔","︳","︴","﹍","﹎","﹏","＿"]}
+{"version":"1.5.2","languages":{"ru":{"hash":"ru_ddd9437b45","wasm":"ru","page_count":43},"lv":{"hash":"lv_a7c0cdda84","wasm":null,"page_count":43},"en":{"hash":"en_996f2a9bad","wasm":"en","page_count":43}},"include_characters":["_","‿","⁀","⁔","︳","︴","﹍","﹎","﹏","＿"]}
