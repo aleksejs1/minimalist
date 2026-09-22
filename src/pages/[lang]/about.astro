@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { useTranslations } from '../../i18n/utils';
+import { useTranslations, getLocalizedPath } from '../../i18n/utils';
 import { languages, type SupportedLanguage } from '../../i18n/ui';
 
 export function getStaticPaths() {
@@ -29,80 +29,248 @@ const t = useTranslations(lang);
       {
         lang === 'ru' ? (
           <>
-            <h2>Манифест проекта</h2>
+            <h2>Манифест и философия</h2>
             <p>
-              <strong>minimalist.lv</strong> — это независимая некоммерческая база знаний и каталог инструментов, созданный для всех, кто стремится к осознанной простоте в материальном мире, цифровой среде и мыслях.
+              <strong>minimalist.lv</strong> — это независимая некоммерческая база знаний, блог и исследовательское пространство, созданное для всех, кто стремится к осознанной простоте в вещах, цифровой среде, мышлении и работе.
             </p>
             <p>
-              Мы убеждены, что изобилие вещей и постоянный информационный шум не делают нас счастливее. Напротив, они крадут самый невозобновляемый ресурс человека — <em>время и внимание</em>.
+              Мы рассматриваем минимализм не как догматичный аскетизм и не как соревнование за «жизнь с 15 вещами в белой комнате». Для нас минимализм — это <strong>практический инструмент отсечения лишнего</strong>. В мире агрессивного маркетинга, перепотребления и круглосуточного информационного шума способность сказать «мне достаточно» становится главным условием сохранения самого невосполнимого ресурса — <em>вашего времени, внимания и душевного равновесия</em>.
             </p>
 
-            <h2>Критерии отбора программ в каталоге</h2>
+            <h2>Что вы найдете на этом сайте</h2>
             <p>
-              Наш каталог программ вдохновлен стандартами проекта Privacy Guides. Мы не принимаем платные интеграции и оцениваем каждый инструмент по строгим критериям:
+              Проект объединяет системную теорию и практические прикладные инструменты, помогающие навести порядок в ключевых сферах жизни:
+            </p>
+
+            <div class="about-grid not-prose">
+              <a href={getLocalizedPath('/guides/', lang)} class="about-card card">
+                <span class="about-card-tag mono">ФУНДАМЕНТ</span>
+                <h3 class="about-card-title">База знаний (20 руководств)</h3>
+                <p class="about-card-desc">
+                  Глубокие структурированные лонгриды по 6 ключевым направлениям: философия и истоки, физическое расхламление дома и гардероба, экология, осознанные финансы, ясность ума и глубокая работа (Deep Work).
+                </p>
+                <span class="about-card-link mono">Перейти к руководствам →</span>
+              </a>
+
+              <a href={getLocalizedPath('/blog/', lang)} class="about-card card">
+                <span class="about-card-tag mono">РЕФЛЕКСИЯ</span>
+                <h3 class="about-card-title">Еженедельный блог</h3>
+                <p class="about-card-desc">
+                  Короткие 5-минутные эссе о замедлении темпа жизни (slow living), привычках осознанности, сезонных экспериментах и преодолении психологических ловушек накопительства.
+                </p>
+                <span class="about-card-link mono">Читать статьи блога →</span>
+              </a>
+
+              <a href={getLocalizedPath('/tools/decision-tree/', lang)} class="about-card card">
+                <span class="about-card-tag mono">ПРАКТИКА</span>
+                <h3 class="about-card-title">Интерактивные утилиты</h3>
+                <p class="about-card-desc">
+                  Инструменты без рекламы и сбора данных: пошаговый алгоритм проверки покупок («Стоит ли это покупать?»), калькулятор стоимости вещей в часах жизни и plain-text шаблоны для задач и бюджета.
+                </p>
+                <span class="about-card-link mono">Открыть утилиты →</span>
+              </a>
+
+              <a href={getLocalizedPath('/tools/', lang)} class="about-card card">
+                <span class="about-card-tag mono">ЦИФРОВАЯ ГИГИЕНА</span>
+                <h3 class="about-card-title">Каталог спокойного софта</h3>
+                <p class="about-card-desc">
+                  Курируемый справочник программ и устройств: отказ от bloatware и подписок, поддержка Local-First, открытые форматы данных, отсутствие слежки и уважение к экрану.
+                </p>
+                <span class="about-card-link mono">Смотреть каталог →</span>
+              </a>
+            </div>
+
+            <h2>Редакционные стандарты</h2>
+            <p>
+              Мы создаем контент так, как хотели бы потреблять его сами:
             </p>
             <ul>
-              <li><strong>No Bloatware (Легковесность):</strong> минимальное потребление ресурсов системы и отсутствие лишних функций.</li>
-              <li><strong>Local-First:</strong> ваши данные хранятся у вас на диске в открытых форматах (Markdown, SQLite, plain text) и доступны офлайн.</li>
-              <li><strong>Уважение к вниманию:</strong> интерфейсы без навязчивой рекламы, баннеров подписки и бесконечных уведомлений.</li>
-              <li><strong>Zero Telemetry:</strong> отсутствие скрытого сбора статистики и сторонних трекеров.</li>
+              <li><strong>Содержание вместо кликбейта:</strong> в статьях нет искусственного раздувания объема, навязчивых заголовков и поверхностных списков «10 простых шагов». Только факты, системные методы и глубокий анализ.</li>
+              <li><strong>Абсолютная независимость:</strong> на сайте нет спонсорских публикаций, баннерной рекламы, реферальных ссылок (affiliate) или заказных обзоров.</li>
+              <li><strong>Уважение к границам читателя:</strong> сайт не показывает навязчивых всплывающих окон (pop-ups), предложений подписаться на рассылку или запросов на пуш-уведомления.</li>
             </ul>
 
-            <h2>Техническая открытость</h2>
+            <h2>Принципы каталога инструментов</h2>
             <p>
-              Этот сайт сгенерирован на 100% в виде статических файлов с помощью Astro. Здесь нет аналитики, трекеров и рекламных пикселей. Весь исходный код и статьи открыты для участия сообщества на GitHub.
+              Каталог софта служит дополнением к руководствам по цифровому минимализму. Мы оцениваем инструменты по строгим критериям:
+            </p>
+            <ul>
+              <li><strong>No Bloatware (Легковесность):</strong> минимальное потребление ресурсов системы и отказ от лишней функциональности.</li>
+              <li><strong>Local-First:</strong> ваши данные хранятся на вашем устройстве в открытых текстовых форматах (Markdown, SQLite, plain text) с полной офлайн-работоспособностью.</li>
+              <li><strong>Спокойный интерфейс:</strong> чистое рабочее пространство без агрессивных цветов, баннеров и темных паттернов интерфейса.</li>
+              <li><strong>Zero Telemetry:</strong> строгая защита приватности и отсутствие скрытой аналитики.</li>
+            </ul>
+
+            <h2>Техническая открытость и этика</h2>
+            <p>
+              Этот сайт сгенерирован на 100% в виде статических файлов с помощью Astro. На страницах нет сторонних скриптов, трекеров и рекламных пикселей.
+            </p>
+            <p>
+              Все тексты базы знаний и блога распространяются по свободной лицензии <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.ru" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>. Исходный код сайта и статьи открыты для участия сообщества в репозитории на GitHub.
             </p>
           </>
         ) : lang === 'lv' ? (
           <>
-            <h2>Projekta manifests</h2>
+            <h2>Projekta manifests un filozofija</h2>
             <p>
-              <strong>minimalist.lv</strong> ir neatkarīga bezpeļņas zināšanu bāze un rīku katalogs ikvienam, kurš tiecas pēc apzinātas vienkāršības materiālajā pasaulē, digitālajā vidē un domās.
+              <strong>minimalist.lv</strong> ir neatkarīga bezpeļņas zināšanu bāze, emuārs un pētniecisks resurss ikvienam, kurš tiecas pēc apzinātas vienkāršības materiālajā pasaulē, digitālajā telpā, domāšanā un darbā.
             </p>
             <p>
-              Mēs esam pārliecināti, ka mantu pārpilnība un nemitīgs informācijas troksnis nepadara mūs laimīgākus. Tie atņem pašu vērtīgāko cilvēka resursu — <em>laiku un uzmanību</em>.
+              Mēs neuztveram minimālismu kā dogmatisku askētismu vai sacensību par «dzīvi tukšā telpā ar piecpadsmit mantām». Mums minimālisms ir <strong>praktisks instruments liekā atskaitīšanai</strong>. Agresīva mārketinga, pārmērīga patēriņa un nepārtraukta informācijas trokšņa laikmetā spēja pateikt «man pietiek» kļūst par galveno nosacījumu paša vērtīgākā cilvēka resursa — <em>laika, uzmanības un iekšējā miera</em> — saglabāšanai.
             </p>
+
+            <h2>Ko jūs atradīsiet šajā vietnē</h2>
+            <p>
+              Projekts apvieno strukturētu teoriju un praktiskus rīkus, kas palīdz ieviest skaidrību svarīgākajās dzīves jomās:
+            </p>
+
+            <div class="about-grid not-prose">
+              <a href={getLocalizedPath('/guides/', lang)} class="about-card card">
+                <span class="about-card-tag mono">PAMATS</span>
+                <h3 class="about-card-title">Zināšanu bāze (20 ceļveži)</h3>
+                <p class="about-card-desc">
+                  Padziļināti raksti sešās pamatjomās: filozofija un saknes, mājas un garderobes atbrīvošana no krāmiem, ekoloģija, apzinātas finanses, prāta skaidrība un dziļais darbs (Deep Work).
+                </p>
+                <span class="about-card-link mono">Skatīt ceļvežus →</span>
+              </a>
+
+              <a href={getLocalizedPath('/blog/', lang)} class="about-card card">
+                <span class="about-card-tag mono">PĀRDOMAS</span>
+                <h3 class="about-card-title">Iknedēļas emuārs</h3>
+                <p class="about-card-desc">
+                  Lakoniski 5 minūšu raksti par dzīves tempa palēnināšanu (slow living), ieradumu spēku, sezonāliem eksperimentiem un patēriņa slazdu pārvarēšanu.
+                </p>
+                <span class="about-card-link mono">Lasīt emuāru →</span>
+              </a>
+
+              <a href={getLocalizedPath('/tools/decision-tree/', lang)} class="about-card card">
+                <span class="about-card-tag mono">PRAKSE</span>
+                <h3 class="about-card-title">Interaktīvie rīki</h3>
+                <p class="about-card-desc">
+                  Lietotnes bez reklāmām un izsekošanas: lēmumu koks pārdomātiem pirkumiem («Vai man to pirkt?»), dzīves stundu kalkulators un vienkāršā teksta veidnes darbam un budžetam.
+                </p>
+                <span class="about-card-link mono">Atvērt rīkus →</span>
+              </a>
+
+              <a href={getLocalizedPath('/tools/', lang)} class="about-card card">
+                <span class="about-card-tag mono">DIGITĀLĀ HIGIĒNA</span>
+                <h3 class="about-card-title">Mierīgu programmu katalogs</h3>
+                <p class="about-card-desc">
+                  Rūpīgi atlasītas programmas un ierīces: atteikšanās no liekas noslodzes un abonementiem, atbalsts Local-First principam, atvērti formāti un pilnīgs privātums.
+                </p>
+                <span class="about-card-link mono">Pārlūkot katalogu →</span>
+              </a>
+            </div>
+
+            <h2>Redakcijas standarti</h2>
+            <p>
+              Mēs veidojam saturu tā, kā paši vēlētos to lasīt:
+            </p>
+            <ul>
+              <li><strong>Būtība bez virspusības:</strong> rakstos nav mākslīgi izstiepta teksta, kliedzošu virsrakstu un paviršu «10 vienkāršu soļu» sarakstu. Tikai pamatotas atziņas un reāla prakse.</li>
+              <li><strong>Pilnīga neatkarība:</strong> vietnē nav sponsoru satura, reklāmas baneru, partneru saišu (affiliate) vai pasūtījuma apskatu.</li>
+              <li><strong>Cieņa pret lasītāja uzmanību:</strong> vietne nerāda uznirstošos logus (pop-ups), e-pasta pierakstīšanās aicinājumus vai pārlūka paziņojumu pieprasījumus.</li>
+            </ul>
 
             <h2>Programmatūras atlases kritēriji</h2>
             <p>
-              Mūsu rīku katalogs balstās uz stingriem un pārskatāmiem standartiem:
+              Rīku katalogs papildina digitālās higiēnas ceļvežus un balstās uz stingriem standartiem:
             </p>
             <ul>
               <li><strong>Vieglums un ātrdarbība (No Bloatware):</strong> minimāls sistēmas resursu patēriņš bez liekas funkcionalitātes.</li>
-              <li><strong>Local-First:</strong> jūsu dati pieder jums un tiek glabāti atvērtos formātos (Markdown, SQLite, teksts) ar pilnu bezsaistes atbalstu.</li>
-              <li><strong>Uzmanības cieņa:</strong> saskarnes bez uzbāzīgām reklāmām, abonēšanas logiem un traucējošiem paziņojumiem.</li>
-              <li><strong>Bez telemetrijas:</strong> nekādas slēptas datu vākšanas vai trešo pušu izsekošanas.</li>
+              <li><strong>Local-First:</strong> jūsu dati pieder jums un tiek glabāti atvērtos teksta formātos (Markdown, SQLite, plain text) ar pilnu bezsaistes darbību.</li>
+              <li><strong>Mierīga vide:</strong> saskarnes bez traucējošiem paziņojumiem un uzmanību piesaistošiem manipulāciju elementiem.</li>
+              <li><strong>Bez telemetrijas:</strong> nekādas slēptas datu vākšanas vai trešo pušu analītikas.</li>
             </ul>
 
-            <h2>Tehniskā atvērtība</h2>
+            <h2>Tehniskais atvērtums</h2>
             <p>
-              Šī vietne ir 100% statiska, veidota ar Astro. Tā nesatur analītikas rīkus vai izsekošanas sīkfailus. Viss pirmkods un raksti ir atvērti sadarbībai GitHub repozitorijā.
+              Šī vietne ir 100% statiska, veidota ar Astro. Tā nesatur analītikas rīkus, izsekotājus vai reklāmas sīkfailus.
+            </p>
+            <p>
+              Visi raksti ir licencēti saskaņā ar <a href="https://creativecommons.org/licenses/by-sa/4.0/deed.lv" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>. Vietnes pirmkods un teksti ir atvērti sadarbībai un labojumiem GitHub repozitorijā.
             </p>
           </>
         ) : (
           <>
-            <h2>Our Manifesto</h2>
+            <h2>Manifesto & Philosophy</h2>
             <p>
-              <strong>minimalist.lv</strong> is an independent, non-commercial knowledge base and software directory created for anyone seeking intentional simplicity in their physical space, digital environment, and mindset.
+              <strong>minimalist.lv</strong> is an independent, non-commercial knowledge base, blog, and research space created for anyone seeking intentional simplicity in their physical surroundings, digital workflows, mindset, and work.
             </p>
             <p>
-              We believe that perpetual accumulation and constant sensory noise do not lead to fulfillment. Instead, they extract our most finite resources: <em>time, focus, and peace of mind</em>.
+              We do not treat minimalism as dogmatic asceticism or a competition to survive with fifteen items in an empty room. To us, minimalism is a <strong>practical discipline of subtraction</strong>. In a culture driven by perpetual accumulation, manufactured urgency, and algorithmic sensory noise, the deliberate choice to declare &ldquo;enough&rdquo; is essential for protecting what cannot be replenished: <em>your time, your focus, and your inner peace</em>.
             </p>
 
-            <h2>Software Selection Criteria</h2>
+            <h2>What You Will Find Here</h2>
             <p>
-              Inspired by the rigorous methodology of Privacy Guides, we do not accept sponsorships or affiliate deals. Every recommended tool is evaluated against strict criteria:
+              This publication blends foundational theory with practical, calm utilities to help you establish clarity across vital domains of living:
+            </p>
+
+            <div class="about-grid not-prose">
+              <a href={getLocalizedPath('/guides/', lang)} class="about-card card">
+                <span class="about-card-tag mono">FOUNDATION</span>
+                <h3 class="about-card-title">Core Knowledge Base (20 Guides)</h3>
+                <p class="about-card-desc">
+                  In-depth, structured essays across six key domains: history and philosophy, physical decluttering and capsule wardrobes, zero-waste living, intentional budgeting, mental clarity, and deep work.
+                </p>
+                <span class="about-card-link mono">Explore Guides →</span>
+              </a>
+
+              <a href={getLocalizedPath('/blog/', lang)} class="about-card card">
+                <span class="about-card-tag mono">REFLECTION</span>
+                <h3 class="about-card-title">Weekly Essays & Blog</h3>
+                <p class="about-card-desc">
+                  Concise 5-minute reflections on slow living, daily habits, seasonal decluttering experiments, and overcoming the psychological traps of accumulation.
+                </p>
+                <span class="about-card-link mono">Read Essays →</span>
+              </a>
+
+              <a href={getLocalizedPath('/tools/decision-tree/', lang)} class="about-card card">
+                <span class="about-card-tag mono">PRACTICE</span>
+                <h3 class="about-card-title">Interactive Utilities</h3>
+                <p class="about-card-desc">
+                  Zero-tracking client-side tools: an interactive purchase decision flowchart (&ldquo;Should I Buy This?&rdquo;), a life energy hour calculator, and plain-text starter templates.
+                </p>
+                <span class="about-card-link mono">Open Utilities →</span>
+              </a>
+
+              <a href={getLocalizedPath('/tools/', lang)} class="about-card card">
+                <span class="about-card-tag mono">DIGITAL CALM</span>
+                <h3 class="about-card-title">Calm Software & Device Directory</h3>
+                <p class="about-card-desc">
+                  Curated software and hardware: local-first architecture, plain-text standards, zero telemetry, no subscriptions or dark patterns, and distraction-free E-ink displays.
+                </p>
+                <span class="about-card-link mono">Browse Directory →</span>
+              </a>
+            </div>
+
+            <h2>Editorial Standards</h2>
+            <p>
+              We craft every piece of content the way we wish the rest of the web were built:
             </p>
             <ul>
-              <li><strong>No Bloatware:</strong> Low memory/CPU footprint and refusal of feature-creep.</li>
-              <li><strong>Local-First & Open Standards:</strong> Your data remains stored locally on your device in plain text (Markdown, SQLite, CSV) with 100% offline functionality.</li>
-              <li><strong>Distraction-Free UI:</strong> Clean interfaces without predatory dark patterns, upsell modals, or notification spam.</li>
-              <li><strong>Zero Telemetry:</strong> Uncompromising respect for privacy and digital sovereignty.</li>
+              <li><strong>Depth over clickbait:</strong> No fluff, no sensationalist headlines, and no shallow listicles. Only researched principles and systematic methodology.</li>
+              <li><strong>Zero commercial compromise:</strong> Completely free of sponsorships, display ads, affiliate referral links, and paid software placement.</li>
+              <li><strong>Respect for your attention:</strong> No modal popups, no newsletter interruption overlays, and no browser notification prompts.</li>
             </ul>
 
-            <h2>Technical Integrity</h2>
+            <h2>Software Selection Principles</h2>
             <p>
-              This site is built as a 100% static application using Astro. It contains zero client-side tracking beacons, zero advertising cookies, and runs entirely at the edge. The entire codebase and content library are open-source on GitHub.
+              Our software directory serves as a practical extension of our digital minimalism guides. We curate each entry using clear, ethical criteria:
+            </p>
+            <ul>
+              <li><strong>No Bloatware:</strong> Low memory and CPU footprint, lightweight footprints, and explicit refusal of feature bloat.</li>
+              <li><strong>Local-First & Open Formats:</strong> Your data remains stored locally on your device in open formats (Markdown, SQLite, plain text) with full offline functionality.</li>
+              <li><strong>Calm & Respectful UI:</strong> Interfaces engineered for focus, free of nag screens, upsells, and algorithmic feeds.</li>
+              <li><strong>Zero Telemetry:</strong> Digital sovereignty with zero third-party trackers or telemetry beacons.</li>
+            </ul>
+
+            <h2>Technical Integrity & Open Source</h2>
+            <p>
+              This website is generated as a 100% static site using Astro. It contains no tracking scripts, analytics beacons, or advertising cookies.
+            </p>
+            <p>
+              All knowledge base and blog texts are licensed under <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener noreferrer">Creative Commons Attribution-ShareAlike 4.0 (CC BY-SA 4.0)</a>. The entire codebase and content library are open for community contributions on GitHub.
             </p>
           </>
         )
@@ -113,7 +281,7 @@ const t = useTranslations(lang);
 
 <style>
   .page-header {
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
   }
 
   .category-badge {
@@ -134,7 +302,65 @@ const t = useTranslations(lang);
   }
 
   .page-subtitle {
-    font-size: 1.1rem;
+    font-size: 1.15rem;
     line-height: 1.5;
+  }
+
+  .not-prose {
+    margin: 2rem 0;
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .about-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    padding: 1.5rem;
+    text-decoration: none !important;
+    gap: 0.5rem;
+  }
+
+  .about-card-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+  }
+
+  .about-card-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin: 0.2rem 0 0.4rem;
+    line-height: 1.3;
+  }
+
+  .about-card-desc {
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--text-secondary);
+    margin-bottom: 0.75rem;
+  }
+
+  .about-card-link {
+    margin-top: auto;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--text-primary);
+    padding-top: 0.5rem;
+  }
+
+  @media (max-width: 640px) {
+    .page-title {
+      font-size: 2rem;
+    }
+    .about-grid {
+      grid-template-columns: 1fr;
+    }
   }
 </style>
