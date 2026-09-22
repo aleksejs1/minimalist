@@ -74,30 +74,7 @@ To bypass this irrational loop, minimalists Joshua Fields Millburn and Ryan Nico
 > **The 20/20 Rule:**  
 > If an item can be replaced for **less than €20** and in **less than 20 minutes** from your current location, you can let it go without hesitation.
 
-```
-+-----------------------------------------------------------------+
-|               THE "JUST IN CASE" DECISION MATRIX               |
-|                                                                 |
-|   Has it been used in the past 12 months?                       |
-|         |                                                       |
-|        YES ---> KEEP IT (Store where it is used)                |
-|         |                                                       |
-|        NO                                                       |
-|         v                                                       |
-|   Is it an emergency / safety / legal essential?                |
-|   (First aid kit, passport, fire extinguisher, tax records)     |
-|         |                                                       |
-|        YES ---> KEEP IT (Organize in dedicated archive)         |
-|         |                                                       |
-|        NO                                                       |
-|         v                                                       |
-|   Can it be replaced for < €20 and < 20 minutes?                |
-|         |                                                       |
-|        YES ---> LET IT GO TODAY (Donate, recycle, give away)   |
-|         |                                                       |
-|        NO  ---> Place in a dated Quarantine Box for 90 days     |
-+-----------------------------------------------------------------+
-```
+![Flowchart: The Just In Case Decision Matrix](/images/blog/decision-matrix-just-in-case-en.svg)
 
 Consider the items that typically pass through this filter:
 - Duplicate power adapters and basic charging cables;

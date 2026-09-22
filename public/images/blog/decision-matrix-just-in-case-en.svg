@@ -1,0 +1,170 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 780 625" width="100%" height="100%">
+  <defs>
+    <style>
+      :root {
+        --bg-frame: #ffffff;
+        --border-frame: #e5e7eb;
+        --title-color: #111827;
+        --subtitle-color: #4b5563;
+        --card-q-bg: #f8fafc;
+        --card-q-border: #e2e8f0;
+        --q-title: #0f172a;
+        --q-desc: #64748b;
+        --line-color: #94a3b8;
+        --yes-bg: #ecfdf5;
+        --yes-border: #a7f3d0;
+        --yes-text: #065f46;
+        --no-bg: #fef2f2;
+        --no-border: #fecaca;
+        --no-text: #991b1b;
+        --keep-bg: #ecfdf5;
+        --keep-border: #a7f3d0;
+        --keep-title: #065f46;
+        --keep-desc: #047857;
+        --discard-bg: #fef2f2;
+        --discard-border: #fecaca;
+        --discard-title: #991b1b;
+        --discard-desc: #b91c1c;
+        --quarantine-bg: #fffbeb;
+        --quarantine-border: #fde68a;
+        --quarantine-title: #92400e;
+        --quarantine-desc: #b45309;
+      }
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --bg-frame: #16181d;
+          --border-frame: #272a34;
+          --title-color: #f3f4f6;
+          --subtitle-color: #9ca3af;
+          --card-q-bg: #1e2128;
+          --card-q-border: #2e3440;
+          --q-title: #f8fafc;
+          --q-desc: #94a3b8;
+          --line-color: #4b5563;
+          --yes-bg: rgba(6, 95, 70, 0.3);
+          --yes-border: rgba(52, 211, 153, 0.4);
+          --yes-text: #34d399;
+          --no-bg: rgba(153, 27, 27, 0.3);
+          --no-border: rgba(239, 68, 68, 0.4);
+          --no-text: #fca5a5;
+          --keep-bg: rgba(6, 95, 70, 0.2);
+          --keep-border: rgba(52, 211, 153, 0.4);
+          --keep-title: #34d399;
+          --keep-desc: #6ee7b7;
+          --discard-bg: rgba(153, 27, 27, 0.2);
+          --discard-border: rgba(239, 68, 68, 0.4);
+          --discard-title: #f87171;
+          --discard-desc: #fca5a5;
+          --quarantine-bg: rgba(146, 64, 14, 0.2);
+          --quarantine-border: rgba(245, 158, 11, 0.4);
+          --quarantine-title: #fbbf24;
+          --quarantine-desc: #fde68a;
+        }
+      }
+      .font-main {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      }
+      .font-mono {
+        font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+      }
+    </style>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 z" fill="var(--line-color)" />
+    </marker>
+  </defs>
+
+  <!-- Frame Background -->
+  <rect width="780" height="625" rx="14" fill="var(--bg-frame)" stroke="var(--border-frame)" stroke-width="1.5" />
+
+  <!-- Header -->
+  <g class="font-main">
+    <text x="390" y="48" text-anchor="middle" font-size="16" font-weight="700" letter-spacing="0.06em" fill="var(--title-color)">THE "JUST IN CASE" DECISION MATRIX</text>
+    <text x="390" y="72" text-anchor="middle" font-size="13" fill="var(--subtitle-color)">Decluttering algorithm based on the «20/20 Rule»</text>
+  </g>
+  <line x1="50" y1="92" x2="730" y2="92" stroke="var(--border-frame)" stroke-width="1" />
+
+  <!-- ROW 1 -->
+  <!-- Q1 Card -->
+  <rect x="50" y="115" width="370" height="90" rx="10" fill="var(--card-q-bg)" stroke="var(--card-q-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="72" y="145" font-size="14.5" font-weight="600" fill="var(--q-title)">1. Has it been used in</text>
+    <text x="72" y="167" font-size="14.5" font-weight="600" fill="var(--q-title)">the past 12 months?</text>
+    <text x="72" y="189" font-size="12" fill="var(--q-desc)">Clothes, gadgets, kitchenware, tools</text>
+  </g>
+
+  <!-- Arrow Q1 -> Outcome 1 (YES) -->
+  <line x1="420" y1="160" x2="482" y2="160" stroke="var(--line-color)" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="437" y="148" width="34" height="24" rx="6" fill="var(--yes-bg)" stroke="var(--yes-border)" stroke-width="1" />
+  <text x="454" y="165" class="font-mono" font-size="11" font-weight="700" text-anchor="middle" fill="var(--yes-text)">YES</text>
+
+  <!-- Outcome 1 -->
+  <rect x="490" y="125" width="240" height="70" rx="10" fill="var(--keep-bg)" stroke="var(--keep-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="508" y="152" font-size="13" font-weight="700" letter-spacing="0.04em" fill="var(--keep-title)">✓ KEEP IT</text>
+    <text x="508" y="173" font-size="12" fill="var(--keep-desc)">Store where it is easily accessible</text>
+  </g>
+
+  <!-- Arrow Q1 -> Q2 (NO) -->
+  <line x1="235" y1="205" x2="235" y2="247" stroke="var(--line-color)" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="215" y="214" width="40" height="24" rx="6" fill="var(--no-bg)" stroke="var(--no-border)" stroke-width="1" />
+  <text x="235" y="231" class="font-mono" font-size="11" font-weight="700" text-anchor="middle" fill="var(--no-text)">NO</text>
+
+  <!-- ROW 2 -->
+  <!-- Q2 Card -->
+  <rect x="50" y="255" width="370" height="90" rx="10" fill="var(--card-q-bg)" stroke="var(--card-q-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="72" y="285" font-size="14.5" font-weight="600" fill="var(--q-title)">2. Is it an emergency, safety</text>
+    <text x="72" y="307" font-size="14.5" font-weight="600" fill="var(--q-title)">or legal essential?</text>
+    <text x="72" y="329" font-size="12" fill="var(--q-desc)">First aid, passport, fire extinguisher, taxes</text>
+  </g>
+
+  <!-- Arrow Q2 -> Outcome 2 (YES) -->
+  <line x1="420" y1="300" x2="482" y2="300" stroke="var(--line-color)" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="437" y="288" width="34" height="24" rx="6" fill="var(--yes-bg)" stroke="var(--yes-border)" stroke-width="1" />
+  <text x="454" y="305" class="font-mono" font-size="11" font-weight="700" text-anchor="middle" fill="var(--yes-text)">YES</text>
+
+  <!-- Outcome 2 -->
+  <rect x="490" y="265" width="240" height="70" rx="10" fill="var(--keep-bg)" stroke="var(--keep-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="508" y="292" font-size="13" font-weight="700" letter-spacing="0.04em" fill="var(--keep-title)">✓ KEEP IT</text>
+    <text x="508" y="313" font-size="12" fill="var(--keep-desc)">Organize in dedicated archive</text>
+  </g>
+
+  <!-- Arrow Q2 -> Q3 (NO) -->
+  <line x1="235" y1="345" x2="235" y2="387" stroke="var(--line-color)" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="215" y="354" width="40" height="24" rx="6" fill="var(--no-bg)" stroke="var(--no-border)" stroke-width="1" />
+  <text x="235" y="371" class="font-mono" font-size="11" font-weight="700" text-anchor="middle" fill="var(--no-text)">NO</text>
+
+  <!-- ROW 3 -->
+  <!-- Q3 Card -->
+  <rect x="50" y="395" width="370" height="90" rx="10" fill="var(--card-q-bg)" stroke="var(--card-q-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="72" y="425" font-size="14.5" font-weight="600" fill="var(--q-title)">3. Can it be replaced for</text>
+    <text x="72" y="447" font-size="14.5" font-weight="600" fill="var(--q-title)">less than €20 and in &lt; 20 min?</text>
+    <text x="72" y="469" font-size="12" fill="var(--q-desc)">Standard cables, extra mugs, spare hardware</text>
+  </g>
+
+  <!-- Arrow Q3 -> Outcome 3 (YES) -->
+  <line x1="420" y1="440" x2="482" y2="440" stroke="var(--line-color)" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="437" y="428" width="34" height="24" rx="6" fill="var(--yes-bg)" stroke="var(--yes-border)" stroke-width="1" />
+  <text x="454" y="445" class="font-mono" font-size="11" font-weight="700" text-anchor="middle" fill="var(--yes-text)">YES</text>
+
+  <!-- Outcome 3 -->
+  <rect x="490" y="405" width="240" height="70" rx="10" fill="var(--discard-bg)" stroke="var(--discard-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="508" y="432" font-size="13" font-weight="700" letter-spacing="0.04em" fill="var(--discard-title)">✕ LET IT GO TODAY</text>
+    <text x="508" y="453" font-size="12" fill="var(--discard-desc)">Donate, sell, or recycle</text>
+  </g>
+
+  <!-- Arrow Q3 -> Quarantine (NO) -->
+  <line x1="235" y1="485" x2="235" y2="517" stroke="var(--line-color)" stroke-width="2" marker-end="url(#arrow)" />
+  <rect x="215" y="492" width="40" height="24" rx="6" fill="var(--no-bg)" stroke="var(--no-border)" stroke-width="1" />
+  <text x="235" y="509" class="font-mono" font-size="11" font-weight="700" text-anchor="middle" fill="var(--no-text)">NO</text>
+
+  <!-- ROW 4: Quarantine Box -->
+  <rect x="50" y="525" width="680" height="70" rx="10" fill="var(--quarantine-bg)" stroke="var(--quarantine-border)" stroke-width="1.5" />
+  <g class="font-main">
+    <text x="72" y="552" font-size="13.5" font-weight="700" letter-spacing="0.04em" fill="var(--quarantine-title)">⏳ PLACE IN A 90-DAY QUARANTINE BOX</text>
+    <text x="72" y="573" font-size="12" fill="var(--quarantine-desc)">Label box with today's date. If untouched after 3 months, donate without looking back.</text>
+  </g>
+</svg>

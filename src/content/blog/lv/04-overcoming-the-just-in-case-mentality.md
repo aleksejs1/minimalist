@@ -74,30 +74,7 @@ Lai pārtrauktu šo loku un izslēgtu iracionālās bailes, minimālisti Džošu
 > **20/20 likums:**  
 > Ja priekšmetu var aizstāt par **mazāk nekā 20 eiro** un **ātrāk nekā 20 minūtēs** no jūsu pašreizējās atrašanās vietas, no tā var atvadīties bez jebkādām šaubām.
 
-```
-+-----------------------------------------------------------------+
-|              «JA NU NODERĒS?» LĒMUMU PIEŅEMŠANAS MATRICA        |
-|                                                                 |
-|   Vai lieta ir lietota pēdējo 12 mēnešu laikā?                  |
-|         |                                                       |
-|        JĀ  ---> PATURĒT (Glabāt ērti pieejamā vietā)            |
-|         |                                                       |
-|        NĒ                                                       |
-|         v                                                       |
-|   Vai tas ir būtisks drošības vai juridisks priekšmets?         |
-|   (Pirmās palīdzības aptieciņa, pase, ugunsdzēšamais aparāts)   |
-|         |                                                       |
-|        JĀ  ---> PATURĒT (Organizēt mērķtiecīgā arhīvā)          |
-|         |                                                       |
-|        NĒ                                                       |
-|         v                                                       |
-|   Vai to var aizstāt par < 20 € un < 20 minūtēs?                |
-|         |                                                       |
-|        JĀ  ---> ATBRĪVOTIES ŠODIEN (Ziedot, nodot pārstrādei)   |
-|         |                                                       |
-|        NĒ  ---> Ievietot «karantīnas» kastē ar datumu uz 90 d.  |
-+-----------------------------------------------------------------+
-```
+![Blokshēma: «Ja nu noderēs?» lēmumu pieņemšanas matrica](/images/blog/decision-matrix-just-in-case-lv.svg)
 
 Atcerieties lietas, kas parasti atbilst šim filtram:
 - Liekie USB kabeļi un vecie lādētāji;
