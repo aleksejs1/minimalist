@@ -37,19 +37,7 @@ Before you scan a single document or buy a paper shredder, you must overcome the
 
 Every single piece of paper that enters your life belongs to one of three categories:
 
-```
-                      [ INCOMING PAPER ]
-                              │
-         ┌────────────────────┼────────────────────┐
-         ▼                    ▼                    ▼
-   [ CATEGORY 1 ]       [ CATEGORY 2 ]       [ CATEGORY 3 ]
-  Essential Originals    Scan & Shred         Instant Trash
-   (Wet-ink & Legal)    (Informational)      (Zero Value)
-         │                    │                    │
-         ▼                    ▼                    ▼
-  Single Fireproof      Searchable PDF/A       Recycling Bin
-       Binder         Encrypted Local Vault     (Right Away)
-```
+![Paperless Life Triage Flowchart](/images/blog/paperless-triage-en.svg)
 
 ### 1. Essential Physical Originals (The "Wet-Ink" Tier)
 These are documents where the law, institutions, or embassies strictly require the original physical paper with raised seals, watermarks, or wet-ink signatures. 

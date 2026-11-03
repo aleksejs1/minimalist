@@ -37,19 +37,7 @@ Pirms ķerties pie skenēšanas vai papīra smalcinātāja ieslēgšanas, ir sva
 
 Katrs ienākošais papīra dokuments atbilst tieši vienai no trim kategorijām:
 
-```
-                     [ IENĀKOŠAIS PAPĪRS ]
-                              │
-         ┌────────────────────┼────────────────────┐
-         ▼                    ▼                    ▼
-   [ 1. KATEGORIJA ]    [ 2. KATEGORIJA ]    [ 3. KATEGORIJA ]
-  Juridiskie oriģināli    Skenēt un           Tūlītēja izmešana
-   (Ar zīmogiem/parakstu)  sasmalcināt         (Makulatūra)
-         │                    │                    │
-         ▼                    ▼                    ▼
-  Viena ugunsdroša      Meklējams PDF/A        Konteiners papīra
-     A4 mape            Šifrēts lokāls arhīvs   šķirošanai
-```
+![Ienākošā papīra šķirošanas shēma](/images/blog/paperless-triage-lv.svg)
 
 ### 1. Neatvietojamie oriģināli (Fizisko zīmogu līmenis)
 Tie ir nedaudzie dokumenti, kuros valsts iestādes, tiesas, notāri vai vēstniecības prasa vienīgi fizisku oriģinālu ar reljefiem zīmogiem, ūdenszīmēm vai pašrocīgiem parakstiem:

@@ -1,0 +1,113 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 480" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bgGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f8f9fa" />
+      <stop offset="100%" stop-color="#e9ecef" />
+    </linearGradient>
+    <filter id="cardShadow" x="-5%" y="-5%" width="110%" height="115%" filterUnits="userSpaceOnUse">
+      <feDropShadow dx="0" dy="2" stdDeviation="3" flood-opacity="0.05" />
+    </filter>
+    <marker id="arrow" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M 1 1 L 9 5 L 1 9 z" fill="#18181b" />
+    </marker>
+    <style>
+      .text-title {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        fill: #18181b;
+      }
+      .text-cat {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.06em;
+        fill: #71717a;
+      }
+      .text-body-bold {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 14px;
+        font-weight: 600;
+        fill: #18181b;
+      }
+      .text-body-sub {
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+        font-size: 13px;
+        font-weight: 500;
+        fill: #52525b;
+      }
+      .box {
+        fill: #ffffff;
+        stroke: #18181b;
+        stroke-width: 2;
+        rx: 12px;
+        ry: 12px;
+      }
+      .connector {
+        stroke: #18181b;
+        stroke-width: 2;
+        fill: none;
+      }
+    </style>
+  </defs>
+
+  <!-- Frame Background -->
+  <rect width="840" height="480" rx="16" fill="url(#bgGradient)" stroke="#d4d4d8" stroke-width="1.5" />
+
+  <!-- Connecting Lines -->
+  <!-- From Root down to branch point -->
+  <line x1="420" y1="90" x2="420" y2="130" class="connector" />
+  <!-- Horizontal Bus -->
+  <line x1="165" y1="130" x2="675" y2="130" class="connector" />
+  <!-- Branch to Col 1 -->
+  <line x1="165" y1="130" x2="165" y2="175" class="connector" marker-end="url(#arrow)" />
+  <!-- Branch to Col 2 -->
+  <line x1="420" y1="130" x2="420" y2="175" class="connector" marker-end="url(#arrow)" />
+  <!-- Branch to Col 3 -->
+  <line x1="675" y1="130" x2="675" y2="175" class="connector" marker-end="url(#arrow)" />
+
+  <!-- Vertical connectors from Row 2 to Row 3 -->
+  <line x1="165" y1="270" x2="165" y2="345" class="connector" marker-end="url(#arrow)" />
+  <line x1="420" y1="270" x2="420" y2="345" class="connector" marker-end="url(#arrow)" />
+  <line x1="675" y1="270" x2="675" y2="345" class="connector" marker-end="url(#arrow)" />
+
+  <!-- ROOT NODE -->
+  <rect x="290" y="36" width="260" height="54" class="box" filter="url(#cardShadow)" />
+  <text x="420" y="69" text-anchor="middle" class="text-title">ВХОДЯЩАЯ БУМАГА</text>
+
+  <!-- ROW 2: CATEGORIES -->
+  <!-- Col 1: Категория 1 -->
+  <rect x="50" y="175" width="230" height="95" class="box" filter="url(#cardShadow)" />
+  <text x="165" y="206" text-anchor="middle" class="text-cat">КАТЕГОРИЯ 1</text>
+  <text x="165" y="232" text-anchor="middle" class="text-body-bold">Оригиналы с</text>
+  <text x="165" y="252" text-anchor="middle" class="text-body-bold">«мокрой печатью»</text>
+
+  <!-- Col 2: Категория 2 -->
+  <rect x="305" y="175" width="230" height="95" class="box" filter="url(#cardShadow)" />
+  <text x="420" y="206" text-anchor="middle" class="text-cat">КАТЕГОРИЯ 2</text>
+  <text x="420" y="232" text-anchor="middle" class="text-body-bold">Сканировать</text>
+  <text x="420" y="252" text-anchor="middle" class="text-body-bold">и измельчить</text>
+
+  <!-- Col 3: Категория 3 -->
+  <rect x="560" y="175" width="230" height="95" class="box" filter="url(#cardShadow)" />
+  <text x="675" y="206" text-anchor="middle" class="text-cat">КАТЕГОРИЯ 3</text>
+  <text x="675" y="232" text-anchor="middle" class="text-body-bold">Мгновенный сброс</text>
+  <text x="675" y="252" text-anchor="middle" class="text-body-bold">в макулатуру</text>
+
+  <!-- ROW 3: DESTINATIONS -->
+  <!-- Col 1: Папка-бокс -->
+  <rect x="50" y="345" width="230" height="95" class="box" filter="url(#cardShadow)" />
+  <text x="165" y="388" text-anchor="middle" class="text-body-bold">Одна огнестойкая</text>
+  <text x="165" y="410" text-anchor="middle" class="text-body-bold">папка-бокс</text>
+
+  <!-- Col 2: PDF/A + Архив -->
+  <rect x="305" y="345" width="230" height="95" class="box" filter="url(#cardShadow)" />
+  <text x="420" y="388" text-anchor="middle" class="text-body-bold">Поисковый PDF/A</text>
+  <text x="420" y="410" text-anchor="middle" class="text-body-sub">Локальный архив</text>
+
+  <!-- Col 3: Переработка -->
+  <rect x="560" y="345" width="230" height="95" class="box" filter="url(#cardShadow)" />
+  <text x="675" y="388" text-anchor="middle" class="text-body-bold">Контейнер для</text>
+  <text x="675" y="410" text-anchor="middle" class="text-body-bold">переработки</text>
+</svg>
