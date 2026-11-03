@@ -267,6 +267,58 @@ button {
   margin: 2.5rem 0;
 }
 
+/* Tables in Prose */
+.prose table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  margin: 2rem 0;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.prose th,
+.prose td {
+  padding: 0.85rem 1.15rem;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border-color);
+  border-right: 1px solid var(--border-color);
+}
+
+.prose th:last-child,
+.prose td:last-child {
+  border-right: none;
+}
+
+.prose th {
+  background-color: var(--bg-secondary);
+  color: var(--text-primary);
+  font-weight: 600;
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+}
+
+.prose td {
+  color: var(--text-secondary);
+}
+
+.prose tr:last-child td {
+  border-bottom: none;
+}
+
+.prose tbody tr:hover td {
+  background-color: var(--bg-card-hover);
+}
+
+.prose td strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
 /* Badges */
 .badge {
   display: inline-flex;
