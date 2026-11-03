@@ -27,13 +27,13 @@
       }
       .text-body-bold {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 16px;
+        font-size: 15.5px;
         font-weight: 600;
         fill: #18181b;
       }
       .text-body-sub {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 14.5px;
+        font-size: 14px;
         font-weight: 500;
         fill: #52525b;
       }
@@ -80,34 +80,34 @@
   <!-- Col 1: Категория 1 -->
   <rect x="47" y="165" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="165" y="198" text-anchor="middle" class="text-cat">КАТЕГОРИЯ 1</text>
-  <text x="165" y="227" text-anchor="middle" class="text-body-bold">Оригиналы с</text>
-  <text x="165" y="251" text-anchor="middle" class="text-body-bold">«мокрой печатью»</text>
+  <text x="165" y="227" text-anchor="middle" class="text-body-bold">Юридические оригиналы</text>
+  <text x="165" y="251" text-anchor="middle" class="text-body-sub">(С «мокрой печатью»)</text>
 
   <!-- Col 2: Категория 2 -->
   <rect x="302" y="165" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="420" y="198" text-anchor="middle" class="text-cat">КАТЕГОРИЯ 2</text>
-  <text x="420" y="227" text-anchor="middle" class="text-body-bold">Сканировать</text>
-  <text x="420" y="251" text-anchor="middle" class="text-body-bold">и измельчить</text>
+  <text x="420" y="227" text-anchor="middle" class="text-body-bold">Сканировать и измельчить</text>
+  <text x="420" y="251" text-anchor="middle" class="text-body-sub">(Информационные)</text>
 
   <!-- Col 3: Категория 3 -->
   <rect x="557" y="165" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="675" y="198" text-anchor="middle" class="text-cat">КАТЕГОРИЯ 3</text>
   <text x="675" y="227" text-anchor="middle" class="text-body-bold">Мгновенный сброс</text>
-  <text x="675" y="251" text-anchor="middle" class="text-body-bold">в макулатуру</text>
+  <text x="675" y="251" text-anchor="middle" class="text-body-sub">(Нулевая ценность)</text>
 
   <!-- ROW 3: DESTINATIONS -->
   <!-- Col 1: Папка-бокс -->
   <rect x="47" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
-  <text x="165" y="380" text-anchor="middle" class="text-body-bold">Одна огнестойкая</text>
-  <text x="165" y="405" text-anchor="middle" class="text-body-bold">папка-бокс</text>
+  <text x="165" y="380" text-anchor="middle" class="text-body-bold">Огнестойкая папка A4</text>
+  <text x="165" y="405" text-anchor="middle" class="text-body-sub">(Единый архив документов)</text>
 
   <!-- Col 2: PDF/A + Архив -->
   <rect x="302" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="420" y="380" text-anchor="middle" class="text-body-bold">Поисковый PDF/A</text>
-  <text x="420" y="405" text-anchor="middle" class="text-body-sub">Локальный архив</text>
+  <text x="420" y="405" text-anchor="middle" class="text-body-sub">(Локальный архив)</text>
 
   <!-- Col 3: Переработка -->
   <rect x="557" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
-  <text x="675" y="380" text-anchor="middle" class="text-body-bold">Контейнер для</text>
-  <text x="675" y="405" text-anchor="middle" class="text-body-bold">переработки</text>
+  <text x="675" y="380" text-anchor="middle" class="text-body-bold">Контейнер переработки</text>
+  <text x="675" y="405" text-anchor="middle" class="text-body-sub">(Сразу в макулатуру)</text>
 </svg>

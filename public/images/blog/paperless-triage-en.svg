@@ -27,13 +27,13 @@
       }
       .text-body-bold {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 16px;
+        font-size: 15.5px;
         font-weight: 600;
         fill: #18181b;
       }
       .text-body-sub {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 14.5px;
+        font-size: 14px;
         font-weight: 500;
         fill: #52525b;
       }
@@ -98,13 +98,13 @@
   <!-- ROW 3: DESTINATIONS -->
   <!-- Col 1: Fireproof Binder -->
   <rect x="47" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
-  <text x="165" y="380" text-anchor="middle" class="text-body-bold">Single Fireproof</text>
-  <text x="165" y="405" text-anchor="middle" class="text-body-bold">Binder</text>
+  <text x="165" y="380" text-anchor="middle" class="text-body-bold">Fireproof A4 Binder</text>
+  <text x="165" y="405" text-anchor="middle" class="text-body-sub">(Single Family Vault)</text>
 
   <!-- Col 2: Searchable PDF/A -->
   <rect x="302" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="420" y="380" text-anchor="middle" class="text-body-bold">Searchable PDF/A</text>
-  <text x="420" y="405" text-anchor="middle" class="text-body-sub">Encrypted Local Vault</text>
+  <text x="420" y="405" text-anchor="middle" class="text-body-sub">(Encrypted Local Vault)</text>
 
   <!-- Col 3: Recycling Bin -->
   <rect x="557" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />

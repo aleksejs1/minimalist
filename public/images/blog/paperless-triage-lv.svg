@@ -27,13 +27,13 @@
       }
       .text-body-bold {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 16px;
+        font-size: 15.5px;
         font-weight: 600;
         fill: #18181b;
       }
       .text-body-sub {
         font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-        font-size: 14.5px;
+        font-size: 14px;
         font-weight: 500;
         fill: #52525b;
       }
@@ -93,21 +93,21 @@
   <rect x="557" y="165" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="675" y="198" text-anchor="middle" class="text-cat">3. KATEGORIJA</text>
   <text x="675" y="227" text-anchor="middle" class="text-body-bold">Tūlītēja izmešana</text>
-  <text x="675" y="251" text-anchor="middle" class="text-body-sub">(Makulatūra)</text>
+  <text x="675" y="251" text-anchor="middle" class="text-body-sub">(Nulles vērtība)</text>
 
   <!-- ROW 3: DESTINATIONS -->
   <!-- Col 1: Ugunsdroša mape -->
   <rect x="47" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
-  <text x="165" y="380" text-anchor="middle" class="text-body-bold">Viena ugunsdroša</text>
-  <text x="165" y="405" text-anchor="middle" class="text-body-bold">A4 mape</text>
+  <text x="165" y="380" text-anchor="middle" class="text-body-bold">Ugunsdroša A4 mape</text>
+  <text x="165" y="405" text-anchor="middle" class="text-body-sub">(Vienotais ģimenes arhīvs)</text>
 
   <!-- Col 2: Meklējams PDF/A -->
   <rect x="302" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
   <text x="420" y="380" text-anchor="middle" class="text-body-bold">Meklējams PDF/A</text>
-  <text x="420" y="405" text-anchor="middle" class="text-body-sub">Šifrēts lokāls arhīvs</text>
+  <text x="420" y="405" text-anchor="middle" class="text-body-sub">(Šifrēts lokāls arhīvs)</text>
 
   <!-- Col 3: Konteiners šķirošanai -->
   <rect x="557" y="335" width="236" height="105" class="box" filter="url(#cardShadow)" />
-  <text x="675" y="380" text-anchor="middle" class="text-body-bold">Konteiners papīra</text>
-  <text x="675" y="405" text-anchor="middle" class="text-body-bold">šķirošanai</text>
+  <text x="675" y="380" text-anchor="middle" class="text-body-bold">Šķirošanas konteiners</text>
+  <text x="675" y="405" text-anchor="middle" class="text-body-sub">(Uzreiz makulatūrā)</text>
 </svg>
