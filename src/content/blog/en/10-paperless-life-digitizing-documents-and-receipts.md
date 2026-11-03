@@ -83,7 +83,7 @@ Modern smartphone cameras combined with native document scanners produce scans t
 - **Open-Source alternatives:** Dedicated FOSS tools like *Document Scanner* (Android / F-Droid) provide clean, local-only document digitization without telemetry.
 
 ### Step 2: Establish the Golden Naming Convention
-A document that cannot be found when needed is functionally non-existent. Rather than creating deeply nested labyrinthine folders (`Documents/Home/Bills/2026/Electricity/Summer`), rely on a standardized, chronological file naming convention:
+A document that cannot be found when needed is functionally non-existent. Rather than creating deeply nested labyrinthine folders (`Documents/Home/Appliances/Washing-Machine/Warranty/2026`), rely on a standardized, chronological file naming convention:
 
 ```
 YYYY-MM-DD_Category_Issuer_Description.pdf

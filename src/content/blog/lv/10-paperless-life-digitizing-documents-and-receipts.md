@@ -81,7 +81,7 @@ Mūsdienu viedtālruņu kameras apvienojumā ar iebūvētajiem skenēšanas algo
 - **Atvērtā koda alternatīvas:** Lietotājiem, kuri augstu vērtē privātumu, pieejamas FOSS lietotnes bez telemetrijas, piemēram, *Document Scanner* (Android / F-Droid).
 
 ### 2. solis: Zelta failu nosaukumu standarts
-Dokuments, kuru nevar atrast 15 sekunžu laikā, ir bezjēdzīgs. Tā vietā, lai veidotu sarežģītus mapju labirintus (`Dokumenti/Māja/Rēķini/2026/Elektrība/Rudens`), izmantojiet vienotu hronoloģisku nosaukumu šablonu:
+Dokuments, kuru nevar atrast 15 sekunžu laikā, ir bezjēdzīgs. Tā vietā, lai veidotu sarežģītus mapju labirintus (`Dokumenti/Māja/Sadzīves-Tehnika/Veļas-Mašīna/Garantija/2026`), izmantojiet vienotu hronoloģisku nosaukumu šablonu:
 
 ```
 GGGG-MM-DD_Kategorija_Iestade_Apraksts.pdf
